@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PAT Ches | AFLplusplus</title>
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+<meta property="og:title" content="PAT Ches | AFLplusplus" />
+<meta name="twitter:title" content="PAT Ches | AFLplusplus" />
+<meta itemprop="name" content="PAT Ches | AFLplusplus" />
+<meta name="application-name" content="PAT Ches | AFLplusplus" />
+<meta property="og:site_name" content="AFLplusplus" />
+
+<meta name="description" content="The AFLplusplus website" />
+<meta itemprop="description" content="The AFLplusplus website" />
+<meta property="og:description" content="The AFLplusplus website" />
+<meta name="twitter:description" content="The AFLplusplus website" />
+
+<base href="https://aflplus.plus/docs/patches/">
+<link rel="canonical" href="https://aflplus.plus/docs/patches/" itemprop="url" /> 
+<meta name="url" content="https://aflplus.plus/docs/patches/" />
+<meta name="twitter:url" content="https://aflplus.plus/docs/patches/" /> 
+<meta property="og:url" content="https://aflplus.plus/docs/patches/" />
+
+ 
+  <meta itemprop="image" content="https://aflplus.plus/ogimage.png" />
+  <meta property="og:image" content="https://aflplus.plus/ogimage.png" /> 
+  <meta name="twitter:image" content="https://aflplus.plus/ogimage.png" />
+  <meta name="twitter:image:src" content="https://aflplus.plus/ogimage.png" /> 
+
+
+
+<link rel="stylesheet" href="/book.min.5f6934428064085210d9b92c20af9b09c67cef71f93fa65ebbc5af315512573d.css" integrity="sha256-X2k0QoBkCFIQ2bksIK&#43;bCcZ873H5P6Zeu8WvMVUSVz0=">
+
+
+<script defer src="/en.search.min.55d88fec982aa3f5097be652331046a67e9f15d3d98021ac28d1a4e98a7acee6.js" integrity="sha256-VdiP7Jgqo/UJe&#43;ZSMxBGpn6fFdPZgCGsKNGk6Yp6zuY="></script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><img src="/logo_256x256.png" alt="Logo" /><span>AFLplusplus</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+  <ul>
+<li><strong>Site map</strong>
+<ul>
+<li><a href="/features/">Features</a></li>
+<li><a href="/building/">Build &amp; Install</a></li>
+<li><a href="/docs/">Documentation</a></li>
+<li><a href="/docs/tutorials/">Tutorials</a></li>
+<li><a href="/papers/">Papers</a></li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li><strong>Downloads</strong>
+<ul>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/releases/tag/4.00c">Release 4.00c</a>
+</li>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/releases">All releases</a></li>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/archive/master.zip">Current devel</a></li>
+<li><a href="https://raw.githubusercontent.com/AFLplusplus/AFLplusplus/master/docs/COPYING">License</a></li>
+</ul>
+</li>
+<li><strong>Links</strong>
+<ul>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus">Repo (GitHub)</a></li>
+<li><a href="https://opencollective.com/AFLplusplusEU">Donations</a></li>
+<li><a href="https://groups.google.com/group/afl-users">Mailing list</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>PAT Ches</strong>
+
+  <label for="toc-control">
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#installed">INSTALLED</a></li>
+    <li><a href="#not-installed">NOT INSTALLED</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+<article class="markdown"><h1 id="applied-patches">Applied Patches</h1>
+<p>The following patches from <a href="https://github.com/vanhauser-thc/afl-patches">https://github.com/vanhauser-thc/afl-patches</a>
+have been installed or not installed:</p>
+<h2 id="installed">INSTALLED</h2>
+<pre tabindex="0"><code>afl-llvm-fix.diff			by kcwu(at)csie(dot)org
+afl-sort-all_uniq-fix.diff		by legarrec(dot)vincent(at)gmail(dot)com
+laf-intel.diff				by heiko(dot)eissfeldt(at)hexco(dot)de
+afl-llvm-optimize.diff			by mh(at)mh-sec(dot)de
+afl-fuzz-tmpdir.diff			by mh(at)mh-sec(dot)de
+afl-fuzz-79x24.diff			by heiko(dot)eissfeldt(at)hexco(dot)de
+afl-fuzz-fileextensionopt.diff		tbd
+afl-as-AFL_INST_RATIO.diff		by legarrec(dot)vincent(at)gmail(dot)com
+afl-qemu-ppc64.diff			by william(dot)barsse(at)airbus(dot)com
+afl-qemu-optimize-entrypoint.diff	by mh(at)mh-sec(dot)de
+afl-qemu-speed.diff			by abiondo on github
+afl-qemu-optimize-map.diff		by mh(at)mh-sec(dot)de
+</code></pre><ul>
+<li>llvm_mode ngram prev_loc coverage (github.com/adrianherrera/afl-ngram-pass)</li>
+<li>Custom mutator (native library) (by kyakdan)</li>
+<li>unicorn_mode (modernized and updated by domenukk)</li>
+<li>instrim (<a href="https://github.com/csienslab/instrim">https://github.com/csienslab/instrim</a>) was integrated</li>
+<li>MOpt (github.com/puppet-meteor/MOpt-AFL) was imported</li>
+<li>AFLfast additions (github.com/mboehme/aflfast) were incorporated.</li>
+<li>Qemu 3.1 upgrade with enhancement patches (github.com/andreafioraldi/afl)</li>
+<li>Python mutator modules support (github.com/choller/afl)</li>
+<li>Instrument file list in LLVM mode (github.com/choller/afl)</li>
+<li>forkserver patch for afl-tmin (github.com/nccgroup/TriforceAFL)</li>
+</ul>
+<h2 id="not-installed">NOT INSTALLED</h2>
+<pre tabindex="0"><code>afl-fuzz-context_sensitive.diff	- changes too much of the behaviour
+afl-tmpfs.diff - same as afl-fuzz-tmpdir.diff but more complex
+afl-cmin-reduce-dataset.diff - unsure of the impact
+afl-llvm-fix2.diff - not needed with the other patches
+</code></pre></article>
+ 
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+      </footer>
+      
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#installed">INSTALLED</a></li>
+    <li><a href="#not-installed">NOT INSTALLED</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

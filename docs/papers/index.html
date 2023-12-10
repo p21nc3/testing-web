@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Papers | AFLplusplus</title>
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+<meta property="og:title" content="Papers | AFLplusplus" />
+<meta name="twitter:title" content="Papers | AFLplusplus" />
+<meta itemprop="name" content="Papers | AFLplusplus" />
+<meta name="application-name" content="Papers | AFLplusplus" />
+<meta property="og:site_name" content="AFLplusplus" />
+
+<meta name="description" content="The AFLplusplus website" />
+<meta itemprop="description" content="The AFLplusplus website" />
+<meta property="og:description" content="The AFLplusplus website" />
+<meta name="twitter:description" content="The AFLplusplus website" />
+
+<base href="https://aflplus.plus/papers/">
+<link rel="canonical" href="https://aflplus.plus/papers/" itemprop="url" /> 
+<meta name="url" content="https://aflplus.plus/papers/" />
+<meta name="twitter:url" content="https://aflplus.plus/papers/" /> 
+<meta property="og:url" content="https://aflplus.plus/papers/" />
+
+ 
+  <meta itemprop="image" content="https://aflplus.plus/ogimage.png" />
+  <meta property="og:image" content="https://aflplus.plus/ogimage.png" /> 
+  <meta name="twitter:image" content="https://aflplus.plus/ogimage.png" />
+  <meta name="twitter:image:src" content="https://aflplus.plus/ogimage.png" /> 
+
+
+
+<link rel="stylesheet" href="/book.min.5f6934428064085210d9b92c20af9b09c67cef71f93fa65ebbc5af315512573d.css" integrity="sha256-X2k0QoBkCFIQ2bksIK&#43;bCcZ873H5P6Zeu8WvMVUSVz0=">
+
+
+<script defer src="/en.search.min.2121dd144f56093f39999e12ac94e2894ddc6fba97b269735113a9d4958a1a25.js" integrity="sha256-ISHdFE9WCT85mZ4SrJTiiU3cb7qXsmlzUROp1JWKGiU="></script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><img src="/aflpp_logo_256x256_w.png" alt="Logo" /><span>AFLplusplus</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+  <ul>
+<li><strong>Site map</strong>
+<ul>
+<li><a href="/features/">Features</a></li>
+<li><a href="/building/">Build &amp; Install</a></li>
+<li><a href="/docs/">Documentation</a></li>
+<li><a href="/docs/tutorials/">Tutorials</a></li>
+<li><a href="/papers/"class=active>Papers</a></li>
+<li><a href="https://aflplus.plus/libafl-book/">LibAFL Book</a></li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li><strong>Downloads</strong>
+<ul>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/releases/tag/v4.08c">Release 4.08c</a>
+</li>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/releases">All releases</a></li>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/archive/master.zip">Current devel</a></li>
+<li><a href="https://raw.githubusercontent.com/AFLplusplus/AFLplusplus/master/docs/COPYING">License</a></li>
+</ul>
+</li>
+<li><strong>Links</strong>
+<ul>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus">Repo (GitHub)</a></li>
+<li><a href="https://opencollective.com/AFLplusplusEU">Donations</a></li>
+<li><a href="https://groups.google.com/group/afl-users">Mailing list</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Papers</strong>
+
+  <label for="toc-control">
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#works-based-on-afl">Works based on AFL++</a>
+      <ul>
+        <li><a href="#2020">2020</a></li>
+        <li><a href="#2021">2021</a></li>
+        <li><a href="#2022">2022</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+<article class="markdown"><h1 id="papers">Papers</h1>
+<h2 id="works-based-on-afl">Works based on AFL++</h2>
+<h3 id="2020">2020</h3>
+<ul>
+<li>
+<p>Andrea Fioraldi, Dominik Maier, Heiko Eißfeldt, and Marc Heuse. <a href="https://aflplus.plus//papers/aflpp-woot2020.pdf">&ldquo;AFL++: Combining incremental steps of fuzzing research&rdquo;</a>. <em>In 14th USENIX Workshop on Offensive Technologies (WOOT 20)</em>. USENIX Association, Aug. 2020.</p>
+</li>
+<li>
+<p>Andrea Fioraldi, Daniele Cono D’Elia, and Leonardo Querzoni. <a href="https://andreafioraldi.github.io/assets/qasan-secdev20.pdf">&ldquo;Fuzzing binaries for memory safety errors with QASan&rdquo;</a>. <em>In 2020 IEEE Secure Development Conference (SecDev)</em>, 2020.</p>
+</li>
+<li>
+<p>Dominik Maier, Lukas Seidel, and Shinjo Park. <a href="https://arxiv.org/pdf/2005.07797.pdf">&ldquo;BaseSAFE: BasebandSAnitized Fuzzing through Emulation&rdquo;</a>. <em>In 13th ACM Conference on Security and Privacy in Wireless and Mobile Networks (WiSec 20)</em>, Linz (Virtual Event), Austria, July 2020.</p>
+</li>
+</ul>
+<h3 id="2021">2021</h3>
+<ul>
+<li>
+<p>Jinghan Wang, Chengyu Song, and Heng Yin. <a href="https://www.cs.ucr.edu/~csong/ndss21-afl-hier.pdf">&ldquo;Reinforcement Learning-based Hierarchical Seed Scheduling for Greybox Fuzzing&rdquo;</a>. <em>In Proceedings of the 2021 Network and Distributed System Security Symposium (NDSS&rsquo;21)</em>, February 2021.</p>
+</li>
+<li>
+<p>Luca Borzacchiello, Emilio Coppa and Camil Demetrescu. <a href="https://arxiv.org/pdf/2102.06580.pdf">&ldquo;Fuzzing Symbolic Expressions&rdquo;</a>. <em>In 2021 IEEE/ACM 43rd International Conference on Software Engineering (ICSE)</em>, 2021.</p>
+</li>
+<li>
+<p>Sihang Liu, Suyash Mahar, Baishakhi Ray, and Samira Khan. <a href="https://www.cs.virginia.edu/~smk9u/Liu_PMFuzz_ASPLOS21.pdf">&ldquo;PMFuzz: Test Case Generation for Persistent Memory Programs&rdquo;</a>. <em>The International Conference on Architectural Support for Programming Languages and Operating Systems (ASPLOS)</em>, 2021</p>
+</li>
+<li>
+<p>Andrea Fioraldi, Daniele Cono D&rsquo;Elia, Davide Balzarotti. <a href="http://www.s3.eurecom.fr/docs/usenixsec21_fioraldi.pdf">&ldquo;The Use of Likely Invariants as Feedback for Fuzzers&rdquo;</a>. <em>In 30th USENIX Security Symposium (USENIX Security 21)</em>, USENIX Association, August 2021.</p>
+</li>
+<li>
+<p>Prashast Srivastava and Mathias Payer. <a href="http://nebelwelt.net/files/21ISSTA.pdf">&ldquo;Gramatron: Effective Grammar-Aware Fuzzing&rdquo;</a>. <em>InProceedings of the 30th ACM SIGSOFT International Sympo-sium on Software Testing and Analysis (ISSTA ’21)</em>, July 11–17, 2021, Virtual, Denmark.</p>
+</li>
+<li>
+<p>Luca Borzacchiello, Emilio Coppa and Camil Demetrescu. <a href="https://github.com/ecoppa/ecoppa.github.io/raw/master/assets/pdf/FUZZOLIC-PREPRINT-COSE21.pdf">&ldquo;FUZZOLIC: Mixing fuzzing and concolic execution&rdquo;</a>. <em>Computers &amp; Security</em>, Vol. 108, 2021.</p>
+</li>
+<li>
+<p>Dominik Maier and Fabian Toepfer. <a href="https://dmnk.co/raid21-bsod.pdf">&ldquo;BSOD: Binary-only Scalable fuzzing Of device Drivers&rdquo;</a>. <em>In 24th International Symposium on Research in Attacks, Intrusions and Defenses</em>, San Sebastian, Spain, October 2021</p>
+</li>
+<li>
+<p>Keno Haßler and Dominik Maier. <a href="https://dl.acm.org/doi/pdf/10.1145/3503921.3503924">&ldquo;WAFL: Binary-Only WebAssembly Fuzzing with Fast Snapshots &ldquo;</a>. <em>In Reversing and Offensive-oriented Trends Symposium</em>, Vienna, Austria, November 2021</p>
+</li>
+</ul>
+<h3 id="2022">2022</h3>
+<ul>
+<li>
+<p>Alessandro Mantovani, Andrea Fioraldi, Davide Balzarotti. <a href="https://www.s3.eurecom.fr/docs/eurosp22_mantovani.pdf">&ldquo;Fuzzing with Data Dependency Information&rdquo;</a>. <em>In EuroS&amp;P 2022, 7th IEEE European Symposium
+on Security and Privacy, 6-10 June 2022, Genoa, Italy,</em> IEEE (Ed.). Genoa.</p>
+</li>
+<li>
+<p>Alexey Vishnyakov, Daniil Kuts, Vlada Logunova, Darya Parygina, Eli Kobrin, Georgy Savidov, Andrey Fedotov. <a href="https://arxiv.org/pdf/2211.11595">&ldquo;Sydr-Fuzz: Continuous Hybrid Fuzzing and Dynamic Analysis for Security Development Lifecycle&rdquo;</a>. <em>2022 Ivannikov ISPRAS Open Conference (ISPRAS)</em>. IEEE, Moscow, Russia, December 2022.</p>
+</li>
+</ul>
+</article>
+ 
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+      </footer>
+      
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#works-based-on-afl">Works based on AFL++</a>
+      <ul>
+        <li><a href="#2020">2020</a></li>
+        <li><a href="#2021">2021</a></li>
+        <li><a href="#2022">2022</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

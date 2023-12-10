@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>F a Q | AFLplusplus</title>
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+<meta property="og:title" content="F a Q | AFLplusplus" />
+<meta name="twitter:title" content="F a Q | AFLplusplus" />
+<meta itemprop="name" content="F a Q | AFLplusplus" />
+<meta name="application-name" content="F a Q | AFLplusplus" />
+<meta property="og:site_name" content="AFLplusplus" />
+
+<meta name="description" content="The AFLplusplus website" />
+<meta itemprop="description" content="The AFLplusplus website" />
+<meta property="og:description" content="The AFLplusplus website" />
+<meta name="twitter:description" content="The AFLplusplus website" />
+
+<base href="https://aflplus.plus/docs/faq/">
+<link rel="canonical" href="https://aflplus.plus/docs/faq/" itemprop="url" /> 
+<meta name="url" content="https://aflplus.plus/docs/faq/" />
+<meta name="twitter:url" content="https://aflplus.plus/docs/faq/" /> 
+<meta property="og:url" content="https://aflplus.plus/docs/faq/" />
+
+ 
+  <meta itemprop="image" content="https://aflplus.plus/ogimage.png" />
+  <meta property="og:image" content="https://aflplus.plus/ogimage.png" /> 
+  <meta name="twitter:image" content="https://aflplus.plus/ogimage.png" />
+  <meta name="twitter:image:src" content="https://aflplus.plus/ogimage.png" /> 
+
+
+
+<link rel="stylesheet" href="/book.min.5f6934428064085210d9b92c20af9b09c67cef71f93fa65ebbc5af315512573d.css" integrity="sha256-X2k0QoBkCFIQ2bksIK&#43;bCcZ873H5P6Zeu8WvMVUSVz0=">
+
+
+<script defer src="/en.search.min.2121dd144f56093f39999e12ac94e2894ddc6fba97b269735113a9d4958a1a25.js" integrity="sha256-ISHdFE9WCT85mZ4SrJTiiU3cb7qXsmlzUROp1JWKGiU="></script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><img src="/aflpp_logo_256x256_w.png" alt="Logo" /><span>AFLplusplus</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+  <ul>
+<li><strong>Site map</strong>
+<ul>
+<li><a href="/features/">Features</a></li>
+<li><a href="/building/">Build &amp; Install</a></li>
+<li><a href="/docs/">Documentation</a></li>
+<li><a href="/docs/tutorials/">Tutorials</a></li>
+<li><a href="/papers/">Papers</a></li>
+<li><a href="https://aflplus.plus/libafl-book/">LibAFL Book</a></li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li><strong>Downloads</strong>
+<ul>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/releases/tag/v4.08c">Release 4.08c</a>
+</li>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/releases">All releases</a></li>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/archive/master.zip">Current devel</a></li>
+<li><a href="https://raw.githubusercontent.com/AFLplusplus/AFLplusplus/master/docs/COPYING">License</a></li>
+</ul>
+</li>
+<li><strong>Links</strong>
+<ul>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus">Repo (GitHub)</a></li>
+<li><a href="https://opencollective.com/AFLplusplusEU">Donations</a></li>
+<li><a href="https://groups.google.com/group/afl-users">Mailing list</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>F a Q</strong>
+
+  <label for="toc-control">
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#general">General</a></li>
+    <li><a href="#targets">Targets</a></li>
+    <li><a href="#performance">Performance</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+<article class="markdown"><h1 id="frequently-asked-questions-faq">Frequently asked questions (FAQ)</h1>
+<p>If you find an interesting or important question missing, submit it via
+<a href="https://github.com/AFLplusplus/AFLplusplus/discussions">https://github.com/AFLplusplus/AFLplusplus/discussions</a>.</p>
+<h2 id="general">General</h2>
+<!-- raw HTML omitted -->
+<p>AFL++ is a superior fork to Google&rsquo;s AFL - more speed, more and better
+mutations, more and better instrumentation, custom module support, etc.</p>
+<p>American Fuzzy Lop (AFL) was developed by Michał &ldquo;lcamtuf&rdquo; Zalewski starting
+in 2013/2014, and when he left Google end of 2017 he stopped developing it.</p>
+<p>At the end of 2019, the Google fuzzing team took over maintenance of AFL,
+however, it is only accepting PRs from the community and is not developing
+enhancements anymore.</p>
+<p>In the second quarter of 2019, 1 1/2 years later, when no further development
+of AFL had happened and it became clear there would none be coming, AFL++ was
+born, where initially community patches were collected and applied for bug
+fixes and enhancements. Then from various AFL spin-offs - mostly academic
+research - features were integrated. This already resulted in a much advanced
+AFL.</p>
+<p>Until the end of 2019, the AFL++ team had grown to four active developers
+which then implemented their own research and features, making it now by far
+the most flexible and feature rich guided fuzzer available as open source. And
+in independent fuzzing benchmarks it is one of the best fuzzers available,
+e.g.,
+<a href="https://www.fuzzbench.com/reports/2020-08-03/index.html">Fuzzbench Report</a>.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>The definition of the terms whitebox, graybox, and blackbox fuzzing varies
+from one source to another. For example, &ldquo;graybox fuzzing&rdquo; could mean
+binary-only or source code fuzzing, or something completely different.
+Therefore, we try to avoid them.</p>
+<p><a href="https://www.fuzzingbook.org/html/GreyboxFuzzer.html#AFL:-An-Effective-Greybox-Fuzzer">The Fuzzing Book</a>
+describes the original AFL to be a graybox fuzzer. In that sense, AFL++ is
+also a graybox fuzzer.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>We compiled a list of tutorials and exercises, see
+<a href="/docs/tutorials/">/docs/tutorials/</a>.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>A program contains <code>functions</code>, <code>functions</code> contain the compiled machine code.
+The compiled machine code in a <code>function</code> can be in a single or many <code>basic blocks</code>. A <code>basic block</code> is the <strong>largest possible number of subsequent machine
+code instructions</strong> that has <strong>exactly one entry point</strong> (which can be be entered by
+multiple other basic blocks) and runs linearly <strong>without branching or jumping to
+other addresses</strong> (except at the end).</p>
+<pre><code>function() {
+  A:
+    some
+    code
+  B:
+    if (x) goto C; else goto D;
+  C:
+    some code
+    goto E
+  D:
+    some code
+    goto B
+  E:
+    return
+}
+</code></pre><p>Every code block between two jump locations is a <code>basic block</code>.</p>
+<p>An <code>edge</code> is then the unique relationship between two directly connected
+<code>basic blocks</code> (from the code example above):</p>
+<pre><code>              Block A
+                |
+                v
+              Block B  &lt;------+
+            /        \       |
+            v          v      |
+        Block C    Block D --+
+            \
+              v
+              Block E
+</code></pre><p>Every line between two blocks is an <code>edge</code>. Note that a few basic block loop
+to itself, this too would be an edge.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>To stop afl-fuzz, minimize it&rsquo;s corpus and restart you would usually do:</p>
+<pre><code>Control-C  # to terminate afl-fuzz
+$ afl-cmin -T nproc -i out/default/queue -o minimized_queue -- ./target
+$ AFL_FAST_CAL=1 AFL_CMPLOG_ONLY_NEW=1 afl-fuzz -i minimized_queue -o out2 [other options] -- ./target
+</code></pre><p>If this improves fuzzing or not is debated and no consensus has been reached
+or in-depth analysis been performed.</p>
+<p>On the pro side:
+* The queue/corpus is reduced (up to 20%) by removing intermediate paths
+that are maybe not needed anymore.</p>
+<p>On the con side:
+* Fuzzing time is lost for the time the fuzzing is stopped, minimized and
+restarted.</p>
+<p>The the big question:
+* Does a minimized queue/corpus improve finding new coverage or does it
+hinder it?</p>
+<p>The AFL++ team&rsquo;s own limited analysis seem to to show that keeping
+intermediate paths help to find more coverage, at least for afl-fuzz.</p>
+<p>For honggfuzz in comparison it is a good idea to restart it from time to
+time if you have other fuzzers (e.g: AFL++) running in parallel to sync
+the finds of other fuzzers to honggfuzz as it has no syncing feature like
+AFL++ or libfuzzer.</p>
+<!-- raw HTML omitted -->
+<h2 id="targets">Targets</h2>
+<!-- raw HTML omitted -->
+<p>AFL++ is a great fuzzer if you have the source code available.</p>
+<p>However, if there is only the binary program and no source code available,
+then the standard non-instrumented mode is not effective.</p>
+<p>To learn how these binaries can be fuzzed, read
+<a href="/docs/fuzzing_binary-only_targets/">/docs/fuzzing_binary-only_targets/</a>.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>The short answer is - you cannot, at least not &ldquo;out of the box&rdquo;.</p>
+<p>For more information on fuzzing network services, see
+<a href="/docs/best_practices/#fuzzing-a-network-service">/docs/best_practices/#fuzzing-a-network-service</a>.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Not all GUI programs are suitable for fuzzing. If the GUI program can read the
+fuzz data from a file without needing any user interaction, then it would be
+suitable for fuzzing.</p>
+<p>For more information on fuzzing GUI programs, see
+<a href="/docs/best_practices/#fuzzing-a-gui-program">/docs/best_practices/#fuzzing-a-gui-program</a>.</p>
+<!-- raw HTML omitted -->
+<h2 id="performance">Performance</h2>
+<!-- raw HTML omitted -->
+<p>Good performance generally means &ldquo;making the fuzzing results better&rdquo;. This can
+be influenced by various factors, for example, speed (finding lots of paths
+quickly) or thoroughness (working with decreased speed, but finding better
+mutations).</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>There are a few things you can do to improve the fuzzing speed, see
+<a href="/docs/best_practices/#improving-speed">/docs/best_practices/#improving-speed</a>.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Stability is measured by how many percent of the edges in the target are
+&ldquo;stable&rdquo;. Sending the same input again and again should take the exact same
+path through the target every time. If that is the case, the stability is
+100%.</p>
+<p>If, however, randomness happens, e.g., a thread reading other external data,
+reaction to timing, etc., then in some of the re-executions with the same data
+the edge coverage result will be different across runs. Those edges that
+change are then flagged &ldquo;unstable&rdquo;.</p>
+<p>The more &ldquo;unstable&rdquo; edges there are, the harder it is for AFL++ to identify
+valid new paths.</p>
+<p>If you fuzz in persistent mode (<code>AFL_LOOP</code> or <code>LLVMFuzzerTestOneInput()</code>
+harnesses, a large number of unstable edges can mean that the target keeps
+internal state and therefore it is possible that crashes cannot be replayed.
+In such a case do either <strong>not</strong> fuzz in persistent mode (remove <code>AFL_LOOP()</code>
+from your harness or call <code>LLVMFuzzerTestOneInput()</code> harnesses with <code>@@</code>),
+or set a low  <code>AFL_LOOP</code> value, e.g. 100, and enable <code>AFL_PERSISTENT_RECORD</code>
+in <code>config.h</code> with the same value.</p>
+<p>A value above 90% is usually fine and a value above 80% is also still ok, and
+even a value above 20% can still result in successful finds of bugs. However,
+it is recommended that for values below 90% or 80% you should take
+countermeasures to improve stability.</p>
+<p>For more information on stability and how to improve the stability value, see
+<a href="/docs/best_practices/#improving-stability">/docs/best_practices/#improving-stability</a>.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Not every item in our queue/corpus is the same, some are more interesting,
+others provide little value.
+A power schedule measures how &ldquo;interesting&rdquo; a value is, and depending on
+the calculated value spends more or less time mutating it.</p>
+<p>AFL++ comes with several power schedules, initially ported from
+<a href="https://github.com/mboehme/aflfast">AFLFast</a>, however, modified to be more
+effective and several more modes added.</p>
+<p>The most effective modes are <code>-p fast</code> (default) and <code>-p explore</code>.</p>
+<p>If you fuzz with several parallel afl-fuzz instances, then it is beneficial
+to assign a different schedule to each instance, however the majority should
+be <code>fast</code> and <code>explore</code>.</p>
+<p>It does not make sense to explain the details of the calculation and
+reasoning behind all of the schedules. If you are interested, read the source
+code and the AFLFast paper.</p>
+<!-- raw HTML omitted -->
+<h2 id="troubleshooting">Troubleshooting</h2>
+<!-- raw HTML omitted -->
+<p>It can happen that you see this error on startup when fuzzing a target:</p>
+<pre><code>[-] FATAL: forkserver is already up, but an instrumented dlopen() library
+           loaded afterwards. You must AFL_PRELOAD such libraries to be able
+           to fuzz them or LD_PRELOAD to run outside of afl-fuzz.
+           To ignore this set AFL_IGNORE_PROBLEMS=1.
+</code></pre><p>As the error describes, a dlopen() call is happening in the target that is
+loading an instrumented library after the forkserver is already in place. This
+is a problem for afl-fuzz because when the forkserver is started, we must know
+the map size already and it can&rsquo;t be changed later.</p>
+<p>The best solution is to simply set <code>AFL_PRELOAD=foo.so</code> to the libraries that
+are dlopen&rsquo;ed (e.g., use <code>strace</code> to see which), or to set a manual forkserver
+after the final dlopen().</p>
+<p>If this is not a viable option, you can set <code>AFL_IGNORE_PROBLEMS=1</code> but then
+the existing map will be used also for the newly loaded libraries, which
+allows it to work, however, the efficiency of the fuzzing will be partially
+degraded. Note that there is additionally <code>AFL_IGNORE_PROBLEMS_COVERAGE</code> to
+additionally tell AFL++ to ignore any coverage from the late loaded libaries.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>If you see this kind of error when trying to instrument a target with
+afl-cc/afl-clang-fast/afl-clang-lto:</p>
+<pre><code>/prg/tmp/llvm-project/build/bin/clang-13: symbol lookup error: /usr/local/bin/../lib/afl//cmplog-instructions-pass.so: undefined symbol: _ZNK4llvm8TypeSizecvmEv
+clang-13: error: unable to execute command: No such file or directory
+clang-13: error: clang frontend command failed due to signal (use -v to see invocation)
+clang version 13.0.0 (https://github.com/llvm/llvm-project 1d7cf550721c51030144f3cd295c5789d51c4aad)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /prg/tmp/llvm-project/build/bin
+clang-13: note: diagnostic msg:
+********************
+</code></pre><p>Then this means that your OS updated the clang installation from an upgrade
+package and because of that the AFL++ llvm plugins do not match anymore.</p>
+<p>Solution: <code>git pull ; make clean install</code> of AFL++.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>When you run a large instrumented program stand-alone or via afl-showmap
+you might see a warning like the following:</p>
+<pre><code>Warning: AFL++ tools might need to set AFL_MAP_SIZE to 223723 to be able to run this instrumented program if this crashes!
+</code></pre><p>Depending how the target works it might also crash afterwards.</p>
+<p>Solution: just do an <code>export AFL_MAP_SIZE=(the value in the warning)</code>.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>If you compile C++ harnesses and see <code>undefined reference</code> errors for
+variables named <code>__afl_...</code>, e.g.:</p>
+<pre><code>/usr/bin/ld: /tmp/test-d3085f.o: in function `foo::test()':
+test.cpp:(.text._ZN3fooL4testEv[_ZN3fooL4testEv]+0x35): undefined reference to `foo::__afl_connected'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+</code></pre><p>Then you use AFL++ macros like <code>__AFL_LOOP</code> within a namespace and this
+will not work.</p>
+<p>Solution: Move that harness portion to the global namespace, e.g. before:</p>
+<pre><code>#include &lt;cstdio&gt;
+namespace foo {
+  static void test() {
+    while(__AFL_LOOP(1000)) {
+      foo::function();
+    }
+  }
+}
+
+int main(int argc, char** argv) {
+  foo::test();
+  return 0;
+}
+</code></pre><p>after:</p>
+<pre><code>#include &lt;cstdio&gt;
+static void mytest() {
+  while(__AFL_LOOP(1000)) {
+    foo::function();
+  }
+}
+namespace foo {
+  static void test() {
+    mytest();
+  }
+}
+int main(int argc, char** argv) {
+  foo::test();
+  return 0;
+}
+</code></pre><!-- raw HTML omitted -->
+</article>
+ 
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+      </footer>
+      
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#general">General</a></li>
+    <li><a href="#targets">Targets</a></li>
+    <li><a href="#performance">Performance</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

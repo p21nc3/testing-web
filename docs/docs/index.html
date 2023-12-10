@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Docs | AFLplusplus</title>
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+<meta property="og:title" content="Docs | AFLplusplus" />
+<meta name="twitter:title" content="Docs | AFLplusplus" />
+<meta itemprop="name" content="Docs | AFLplusplus" />
+<meta name="application-name" content="Docs | AFLplusplus" />
+<meta property="og:site_name" content="AFLplusplus" />
+
+<meta name="description" content="The AFLplusplus website" />
+<meta itemprop="description" content="The AFLplusplus website" />
+<meta property="og:description" content="The AFLplusplus website" />
+<meta name="twitter:description" content="The AFLplusplus website" />
+
+<base href="https://aflplus.plus/docs/">
+<link rel="canonical" href="https://aflplus.plus/docs/" itemprop="url" /> 
+<meta name="url" content="https://aflplus.plus/docs/" />
+<meta name="twitter:url" content="https://aflplus.plus/docs/" /> 
+<meta property="og:url" content="https://aflplus.plus/docs/" />
+
+ 
+  <meta itemprop="image" content="https://aflplus.plus/ogimage.png" />
+  <meta property="og:image" content="https://aflplus.plus/ogimage.png" /> 
+  <meta name="twitter:image" content="https://aflplus.plus/ogimage.png" />
+  <meta name="twitter:image:src" content="https://aflplus.plus/ogimage.png" /> 
+
+
+
+<link rel="stylesheet" href="/book.min.5f6934428064085210d9b92c20af9b09c67cef71f93fa65ebbc5af315512573d.css" integrity="sha256-X2k0QoBkCFIQ2bksIK&#43;bCcZ873H5P6Zeu8WvMVUSVz0=">
+
+
+<script defer src="/en.search.min.2121dd144f56093f39999e12ac94e2894ddc6fba97b269735113a9d4958a1a25.js" integrity="sha256-ISHdFE9WCT85mZ4SrJTiiU3cb7qXsmlzUROp1JWKGiU="></script>
+
+<link rel="alternate" type="application/rss+xml" href="https://aflplus.plus/docs/index.xml" title="AFLplusplus" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><img src="/aflpp_logo_256x256_w.png" alt="Logo" /><span>AFLplusplus</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+  <ul>
+<li><strong>Site map</strong>
+<ul>
+<li><a href="/features/">Features</a></li>
+<li><a href="/building/">Build &amp; Install</a></li>
+<li><a href="/docs/"class=active>Documentation</a></li>
+<li><a href="/docs/tutorials/">Tutorials</a></li>
+<li><a href="/papers/">Papers</a></li>
+<li><a href="https://aflplus.plus/libafl-book/">LibAFL Book</a></li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li><strong>Downloads</strong>
+<ul>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/releases/tag/v4.08c">Release 4.08c</a>
+</li>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/releases">All releases</a></li>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/archive/master.zip">Current devel</a></li>
+<li><a href="https://raw.githubusercontent.com/AFLplusplus/AFLplusplus/master/docs/COPYING">License</a></li>
+</ul>
+</li>
+<li><strong>Links</strong>
+<ul>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus">Repo (GitHub)</a></li>
+<li><a href="https://opencollective.com/AFLplusplusEU">Donations</a></li>
+<li><a href="https://groups.google.com/group/afl-users">Mailing list</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Docs</strong>
+
+  <label for="toc-control">
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#fuzzing-targets-with-the-source-code-available">Fuzzing targets with the source code available</a>
+      <ul>
+        <li><a href="#instrumenting-the-target">Instrumenting the target</a></li>
+        <li><a href="#preparing-the-fuzzing-campaign">Preparing the fuzzing campaign</a></li>
+        <li><a href="#fuzzing-the-target">Fuzzing the target</a></li>
+        <li><a href="#managing-the-fuzzing-campaign">Managing the fuzzing campaign</a></li>
+      </ul>
+    </li>
+    <li><a href="#fuzzing-other-targets">Fuzzing other targets</a></li>
+    <li><a href="#additional-information">Additional information</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+<article class="markdown"><h1 id="afl-documentation">AFL++ documentation</h1>
+<p>This is the overview of the AFL++ docs content.</p>
+<p>For general information on AFL++, see the
+<a href="https://github.com/AFLplusplus/AFLplusplus/blob/stable/docs/../README.md">README.md of the repository</a>.</p>
+<p>Also take a look at our <a href="/docs/faq/">/docs/faq/</a> and
+<a href="/docs/best_practices/">/docs/best_practices/</a>.</p>
+<h2 id="fuzzing-targets-with-the-source-code-available">Fuzzing targets with the source code available</h2>
+<p>You can find a quickstart for fuzzing targets with the source code available in
+the <a href="https://github.com/AFLplusplus/AFLplusplus/blob/stable/docs/../README.md#quick-start-fuzzing-with-afl">README.md of the repository</a>.</p>
+<p>For in-depth information on the steps of the fuzzing process, see
+<a href="/docs/fuzzing_in_depth/">/docs/fuzzing_in_depth/</a> or click on the following
+image and select a step.</p>
+<p><img src="https://raw.githubusercontent.com/AFLplusplus/AFLplusplus/dev/docs/resources/0_fuzzing_process_overview.drawio.svg" alt="Fuzzing process overview" title="Fuzzing process overview"></p>
+<p>For further information on instrumentation, see the
+<a href="https://github.com/AFLplusplus/AFLplusplus/blob/stable/docs/../instrumentation/">READMEs in the instrumentation/ folder</a>.</p>
+<h3 id="instrumenting-the-target">Instrumenting the target</h3>
+<p>For more information, click on the following image and select a step.</p>
+<p><img src="https://raw.githubusercontent.com/AFLplusplus/AFLplusplus/dev/docs/resources/1_instrument_target.drawio.svg" alt="Instrumenting the target" title="Instrumenting the target"></p>
+<h3 id="preparing-the-fuzzing-campaign">Preparing the fuzzing campaign</h3>
+<p>For more information, click on the following image and select a step.</p>
+<p><img src="https://raw.githubusercontent.com/AFLplusplus/AFLplusplus/dev/docs/resources/2_prepare_campaign.drawio.svg" alt="Preparing the fuzzing campaign" title="Preparing the fuzzing campaign"></p>
+<h3 id="fuzzing-the-target">Fuzzing the target</h3>
+<p>For more information, click on the following image and select a step.</p>
+<p><img src="https://raw.githubusercontent.com/AFLplusplus/AFLplusplus/dev/docs/resources/3_fuzz_target.drawio.svg" alt="Fuzzing the target" title="Fuzzing the target"></p>
+<h3 id="managing-the-fuzzing-campaign">Managing the fuzzing campaign</h3>
+<p>For more information, click on the following image and select a step.</p>
+<p><img src="https://raw.githubusercontent.com/AFLplusplus/AFLplusplus/dev/docs/resources/4_manage_campaign.drawio.svg" alt="Managing the fuzzing campaign" title="Managing the fuzzing campaign"></p>
+<h2 id="fuzzing-other-targets">Fuzzing other targets</h2>
+<p>To learn about fuzzing other targets, see:</p>
+<ul>
+<li>Binary-only: <a href="/docs/fuzzing_binary-only_targets/">/docs/fuzzing_binary-only_targets/</a></li>
+<li>GUI programs:
+<a href="/docs/best_practices/#fuzzing-a-gui-program">/docs/best_practices/#fuzzing-a-gui-program</a></li>
+<li>Libraries: <a href="https://github.com/AFLplusplus/AFLplusplus/blob/stable/docs/../frida_mode/README.md">frida_mode/README.md</a></li>
+<li>Network services:
+<a href="/docs/best_practices/#fuzzing-a-network-service">/docs/best_practices/#fuzzing-a-network-service</a></li>
+<li>Non-linux: <a href="https://github.com/AFLplusplus/AFLplusplus/blob/stable/docs/../unicorn_mode/README.md">unicorn_mode/README.md</a></li>
+</ul>
+<h2 id="additional-information">Additional information</h2>
+<ul>
+<li>Tools that help fuzzing with AFL++:
+<a href="/docs/third_party_tools/">/docs/third_party_tools/</a></li>
+<li>Tutorials: <a href="/docs/tutorials/">/docs/tutorials/</a></li>
+</ul>
+</article>
+ 
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+      </footer>
+      
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#fuzzing-targets-with-the-source-code-available">Fuzzing targets with the source code available</a>
+      <ul>
+        <li><a href="#instrumenting-the-target">Instrumenting the target</a></li>
+        <li><a href="#preparing-the-fuzzing-campaign">Preparing the fuzzing campaign</a></li>
+        <li><a href="#fuzzing-the-target">Fuzzing the target</a></li>
+        <li><a href="#managing-the-fuzzing-campaign">Managing the fuzzing campaign</a></li>
+      </ul>
+    </li>
+    <li><a href="#fuzzing-other-targets">Fuzzing other targets</a></li>
+    <li><a href="#additional-information">Additional information</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

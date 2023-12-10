@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>I N S T a L L | AFLplusplus</title>
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+<meta property="og:title" content="I N S T a L L | AFLplusplus" />
+<meta name="twitter:title" content="I N S T a L L | AFLplusplus" />
+<meta itemprop="name" content="I N S T a L L | AFLplusplus" />
+<meta name="application-name" content="I N S T a L L | AFLplusplus" />
+<meta property="og:site_name" content="AFLplusplus" />
+
+<meta name="description" content="The AFLplusplus website" />
+<meta itemprop="description" content="The AFLplusplus website" />
+<meta property="og:description" content="The AFLplusplus website" />
+<meta name="twitter:description" content="The AFLplusplus website" />
+
+<base href="https://aflplus.plus/docs/install/">
+<link rel="canonical" href="https://aflplus.plus/docs/install/" itemprop="url" /> 
+<meta name="url" content="https://aflplus.plus/docs/install/" />
+<meta name="twitter:url" content="https://aflplus.plus/docs/install/" /> 
+<meta property="og:url" content="https://aflplus.plus/docs/install/" />
+
+ 
+  <meta itemprop="image" content="https://aflplus.plus/ogimage.png" />
+  <meta property="og:image" content="https://aflplus.plus/ogimage.png" /> 
+  <meta name="twitter:image" content="https://aflplus.plus/ogimage.png" />
+  <meta name="twitter:image:src" content="https://aflplus.plus/ogimage.png" /> 
+
+
+
+<link rel="stylesheet" href="/book.min.5f6934428064085210d9b92c20af9b09c67cef71f93fa65ebbc5af315512573d.css" integrity="sha256-X2k0QoBkCFIQ2bksIK&#43;bCcZ873H5P6Zeu8WvMVUSVz0=">
+
+
+<script defer src="/en.search.min.2121dd144f56093f39999e12ac94e2894ddc6fba97b269735113a9d4958a1a25.js" integrity="sha256-ISHdFE9WCT85mZ4SrJTiiU3cb7qXsmlzUROp1JWKGiU="></script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><img src="/aflpp_logo_256x256_w.png" alt="Logo" /><span>AFLplusplus</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+  <ul>
+<li><strong>Site map</strong>
+<ul>
+<li><a href="/features/">Features</a></li>
+<li><a href="/building/">Build &amp; Install</a></li>
+<li><a href="/docs/">Documentation</a></li>
+<li><a href="/docs/tutorials/">Tutorials</a></li>
+<li><a href="/papers/">Papers</a></li>
+<li><a href="https://aflplus.plus/libafl-book/">LibAFL Book</a></li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li><strong>Downloads</strong>
+<ul>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/releases/tag/v4.08c">Release 4.08c</a>
+</li>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/releases">All releases</a></li>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/archive/master.zip">Current devel</a></li>
+<li><a href="https://raw.githubusercontent.com/AFLplusplus/AFLplusplus/master/docs/COPYING">License</a></li>
+</ul>
+</li>
+<li><strong>Links</strong>
+<ul>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus">Repo (GitHub)</a></li>
+<li><a href="https://opencollective.com/AFLplusplusEU">Donations</a></li>
+<li><a href="https://groups.google.com/group/afl-users">Mailing list</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>I N S T a L L</strong>
+
+  <label for="toc-control">
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#linux-on-x86">Linux on x86</a></li>
+    <li><a href="#macos-x-on-x86-and-arm64-m1">MacOS X on x86 and arm64 (M1)</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+<article class="markdown"><h1 id="building-and-installing-afl">Building and installing AFL++</h1>
+<h2 id="linux-on-x86">Linux on x86</h2>
+<p>An easy way to install AFL++ with everything compiled is available via docker:
+You can use the <a href="https://github.com/AFLplusplus/AFLplusplus/blob/stable/docs/../Dockerfile">Dockerfile</a> or just pull directly from the
+Docker Hub (for x86_64 and arm64):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker pull aflplusplus/aflplusplus:
+docker run -ti -v /location/of/your/target:/src aflplusplus/aflplusplus
+</code></pre></div><p>This image is automatically generated when a push to the stable branch happens.
+You will find your target source code in <code>/src</code> in the container.</p>
+<p>Note: you can also pull <code>aflplusplus/aflplusplus:dev</code> which is the most current
+development state of AFL++.</p>
+<p>If you want to build AFL++ yourself, you have many options. The easiest choice
+is to build and install everything:</p>
+<p>NOTE: depending on your Debian/Ubuntu/Kali/&hellip; release, replace <code>-14</code> with
+whatever llvm version is available. We recommend llvm 13, 14, 15 or 16.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get update
+sudo apt-get install -y build-essential python3-dev automake cmake git flex bison libglib2.0-dev libpixman-1-dev python3-setuptools cargo libgtk-3-dev
+<span style="color:#75715e"># try to install llvm 14 and install the distro default if that fails</span>
+sudo apt-get install -y lld-14 llvm-14 llvm-14-dev clang-14 <span style="color:#f92672">||</span> sudo apt-get install -y lld llvm llvm-dev clang
+sudo apt-get install -y gcc-<span style="color:#66d9ef">$(</span>gcc --version|head -n1|sed <span style="color:#e6db74">&#39;s/\..*//&#39;</span>|sed <span style="color:#e6db74">&#39;s/.* //&#39;</span><span style="color:#66d9ef">)</span>-plugin-dev libstdc++-<span style="color:#66d9ef">$(</span>gcc --version|head -n1|sed <span style="color:#e6db74">&#39;s/\..*//&#39;</span>|sed <span style="color:#e6db74">&#39;s/.* //&#39;</span><span style="color:#66d9ef">)</span>-dev
+sudo apt-get install -y ninja-build <span style="color:#75715e"># for QEMU mode</span>
+git clone https://github.com/AFLplusplus/AFLplusplus
+cd AFLplusplus
+make distrib
+sudo make install
+</code></pre></div><p>It is recommended to install the newest available gcc, clang and llvm-dev
+possible in your distribution!</p>
+<p>Note that <code>make distrib</code> also builds FRIDA mode, QEMU mode, unicorn_mode, and
+more. If you just want plain AFL++, then do <code>make all</code>. If you want some
+assisting tooling compiled but are not interested in binary-only targets, then
+instead choose:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">make source-only
+</code></pre></div><p>These build targets exist:</p>
+<ul>
+<li>all: the main AFL++ binaries and llvm/gcc instrumentation</li>
+<li>binary-only: everything for binary-only fuzzing: frida_mode, nyx_mode,
+qemu_mode, frida_mode, unicorn_mode, coresight_mode, libdislocator,
+libtokencap</li>
+<li>source-only: everything for source code fuzzing: nyx_mode, libdislocator,
+libtokencap</li>
+<li>distrib: everything (for both binary-only and source code fuzzing)</li>
+<li>man: creates simple man pages from the help option of the programs</li>
+<li>install: installs everything you have compiled with the build options above</li>
+<li>clean: cleans everything compiled, not downloads (unless not on a checkout)</li>
+<li>deepclean: cleans everything including downloads</li>
+<li>code-format: format the code, do this before you commit and send a PR please!</li>
+<li>tests: runs test cases to ensure that all features are still working as they
+should</li>
+<li>unit: perform unit tests (based on cmocka)</li>
+<li>help: shows these build options</li>
+</ul>
+<p><a href="https://developer.apple.com/library/archive/qa/qa1118/_index.html">Unless you are on Mac OS X</a>,
+you can also build statically linked versions of the AFL++ binaries by passing
+the <code>STATIC=1</code> argument to make:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">make STATIC<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</code></pre></div><p>These build options exist:</p>
+<ul>
+<li>STATIC - compile AFL++ static</li>
+<li>CODE_COVERAGE - compile the target for code coverage (see docs/instrumentation/README.llvm.md)</li>
+<li>ASAN_BUILD - compiles AFL++ with memory sanitizer for debug purposes</li>
+<li>UBSAN_BUILD - compiles AFL++ tools with undefined behaviour sanitizer for debug purposes</li>
+<li>DEBUG - no optimization, -ggdb3, all warnings and -Werror</li>
+<li>LLVM_DEBUG - shows llvm deprecation warnings</li>
+<li>PROFILING - compile afl-fuzz with profiling information</li>
+<li>INTROSPECTION - compile afl-fuzz with mutation introspection</li>
+<li>NO_PYTHON - disable python support</li>
+<li>NO_SPLICING - disables splicing mutation in afl-fuzz, not recommended for normal fuzzing</li>
+<li>NO_UTF - do not use UTF-8 for line rendering in status screen (fallback to G1 box drawing, of vanilla AFL)</li>
+<li>NO_NYX - disable building nyx mode dependencies</li>
+<li>NO_CORESIGHT - disable building coresight (arm64 only)</li>
+<li>NO_UNICORN_ARM64 - disable building unicorn on arm64</li>
+<li>AFL_NO_X86 - if compiling on non-intel/amd platforms</li>
+<li>LLVM_CONFIG - if your distro doesn&rsquo;t use the standard name for llvm-config (e.g., Debian)</li>
+</ul>
+<p>e.g.: <code>make LLVM_CONFIG=llvm-config-14</code></p>
+<h2 id="macos-x-on-x86-and-arm64-m1">MacOS X on x86 and arm64 (M1)</h2>
+<p>MacOS has some gotchas due to the idiosyncrasies of the platform.</p>
+<p>To build AFL, install llvm (and perhaps gcc) from brew and follow the general
+instructions for Linux. If possible, avoid Xcode at all cost.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">brew install wget git make cmake llvm gdb coreutils
+</code></pre></div><p>Be sure to setup <code>PATH</code> to point to the correct clang binaries and use the
+freshly installed clang, clang++, llvm-config, gmake and coreutils, e.g.:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Depending on your MacOS system + brew version it is either</span>
+export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/opt/homebrew/opt/llvm/bin:</span>$PATH<span style="color:#e6db74">&#34;</span>
+<span style="color:#75715e"># or</span>
+export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/usr/local/opt/llvm/bin:</span>$PATH<span style="color:#e6db74">&#34;</span>
+<span style="color:#75715e"># you can check with &#34;brew info llvm&#34;</span>
+
+export PATH<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:</span>$PATH<span style="color:#e6db74">&#34;</span>
+export CC<span style="color:#f92672">=</span>clang
+export CXX<span style="color:#f92672">=</span>clang++
+gmake
+cd frida_mode
+gmake
+cd ..
+sudo gmake install
+</code></pre></div><p><code>afl-gcc</code> will fail unless you have GCC installed, but that is using outdated
+instrumentation anyway. <code>afl-clang</code> might fail too depending on your PATH setup.
+But you don&rsquo;t want neither, you want <code>afl-clang-fast</code> anyway :) Note that
+<code>afl-clang-lto</code>, <code>afl-gcc-fast</code> and <code>qemu_mode</code> are not working on MacOS.</p>
+<p>The crash reporting daemon that comes by default with MacOS X will cause
+problems with fuzzing. You need to turn it off:</p>
+<pre><code>launchctl unload -w /System/Library/LaunchAgents/com.apple.ReportCrash.plist
+sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.ReportCrash.Root.plist
+</code></pre><p>The <code>fork()</code> semantics on OS X are a bit unusual compared to other unix systems
+and definitely don&rsquo;t look POSIX-compliant. This means two things:</p>
+<ul>
+<li>Fuzzing will be probably slower than on Linux. In fact, some folks report
+considerable performance gains by running the jobs inside a Linux VM on
+MacOS X.</li>
+<li>Some non-portable, platform-specific code may be incompatible with the AFL++
+forkserver. If you run into any problems, set <code>AFL_NO_FORKSRV=1</code> in the
+environment before starting afl-fuzz.</li>
+</ul>
+<p>User emulation mode of QEMU does not appear to be supported on MacOS X, so
+black-box instrumentation mode (<code>-Q</code>) will not work. However, FRIDA mode (<code>-O</code>)
+works on both x86 and arm64 MacOS boxes.</p>
+<p>MacOS X supports SYSV shared memory used by AFL&rsquo;s instrumentation, but the
+default settings aren&rsquo;t usable with AFL++. The default settings on 10.14 seem to
+be:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ipcs -M
+IPC status from &lt;running system&gt; as of XXX
+shminfo:
+        shmmax: <span style="color:#ae81ff">4194304</span> <span style="color:#f92672">(</span>max shared memory segment size<span style="color:#f92672">)</span>
+        shmmin:       <span style="color:#ae81ff">1</span> <span style="color:#f92672">(</span>min shared memory segment size<span style="color:#f92672">)</span>
+        shmmni:      <span style="color:#ae81ff">32</span> <span style="color:#f92672">(</span>max number of shared memory identifiers<span style="color:#f92672">)</span>
+        shmseg:       <span style="color:#ae81ff">8</span> <span style="color:#f92672">(</span>max shared memory segments per process<span style="color:#f92672">)</span>
+        shmall:    <span style="color:#ae81ff">1024</span> <span style="color:#f92672">(</span>max amount of shared memory in pages<span style="color:#f92672">)</span>
+</code></pre></div><p>To temporarily change your settings to something minimally usable with AFL++,
+run these commands as root:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sysctl kern.sysv.shmmax<span style="color:#f92672">=</span><span style="color:#ae81ff">8388608</span>
+sysctl kern.sysv.shmall<span style="color:#f92672">=</span><span style="color:#ae81ff">4096</span>
+</code></pre></div><p>If you&rsquo;re running more than one instance of AFL, you likely want to make
+<code>shmall</code> bigger and increase <code>shmseg</code> as well:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sysctl kern.sysv.shmmax<span style="color:#f92672">=</span><span style="color:#ae81ff">8388608</span>
+sysctl kern.sysv.shmseg<span style="color:#f92672">=</span><span style="color:#ae81ff">48</span>
+sysctl kern.sysv.shmall<span style="color:#f92672">=</span><span style="color:#ae81ff">98304</span>
+</code></pre></div><p>See
+<a href="http://www.spy-hill.com/help/apple/SharedMemory.html">http://www.spy-hill.com/help/apple/SharedMemory.html</a>
+for documentation for these settings and how to make them permanent.</p>
+</article>
+ 
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+      </footer>
+      
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#linux-on-x86">Linux on x86</a></li>
+    <li><a href="#macos-x-on-x86-and-arm64-m1">MacOS X on x86 and arm64 (M1)</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

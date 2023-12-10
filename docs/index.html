@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta name="generator" content="Hugo 0.68.3" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The AFL&#43;&#43; fuzzing framework | AFLplusplus</title>
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+<meta property="og:title" content="The AFL&#43;&#43; fuzzing framework | AFLplusplus" />
+<meta name="twitter:title" content="The AFL&#43;&#43; fuzzing framework | AFLplusplus" />
+<meta itemprop="name" content="The AFL&#43;&#43; fuzzing framework | AFLplusplus" />
+<meta name="application-name" content="The AFL&#43;&#43; fuzzing framework | AFLplusplus" />
+<meta property="og:site_name" content="AFLplusplus" />
+
+<meta name="description" content="The AFLplusplus website" />
+<meta itemprop="description" content="The AFLplusplus website" />
+<meta property="og:description" content="The AFLplusplus website" />
+<meta name="twitter:description" content="The AFLplusplus website" />
+
+<base href="https://aflplus.plus/">
+<link rel="canonical" href="https://aflplus.plus/" itemprop="url" /> 
+<meta name="url" content="https://aflplus.plus/" />
+<meta name="twitter:url" content="https://aflplus.plus/" /> 
+<meta property="og:url" content="https://aflplus.plus/" />
+
+ 
+  <meta itemprop="image" content="https://aflplus.plus/ogimage.png" />
+  <meta property="og:image" content="https://aflplus.plus/ogimage.png" /> 
+  <meta name="twitter:image" content="https://aflplus.plus/ogimage.png" />
+  <meta name="twitter:image:src" content="https://aflplus.plus/ogimage.png" /> 
+
+
+
+<link rel="stylesheet" href="/book.min.5f6934428064085210d9b92c20af9b09c67cef71f93fa65ebbc5af315512573d.css" integrity="sha256-X2k0QoBkCFIQ2bksIK&#43;bCcZ873H5P6Zeu8WvMVUSVz0=">
+
+
+<script defer src="/en.search.min.2121dd144f56093f39999e12ac94e2894ddc6fba97b269735113a9d4958a1a25.js" integrity="sha256-ISHdFE9WCT85mZ4SrJTiiU3cb7qXsmlzUROp1JWKGiU="></script>
+
+<link rel="alternate" type="application/rss+xml" href="https://aflplus.plus/index.xml" title="AFLplusplus" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><img src="/aflpp_logo_256x256_w.png" alt="Logo" /><span>AFLplusplus</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+  <ul>
+<li><strong>Site map</strong>
+<ul>
+<li><a href="/features/">Features</a></li>
+<li><a href="/building/">Build &amp; Install</a></li>
+<li><a href="/docs/">Documentation</a></li>
+<li><a href="/docs/tutorials/">Tutorials</a></li>
+<li><a href="/papers/">Papers</a></li>
+<li><a href="https://aflplus.plus/libafl-book/">LibAFL Book</a></li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li><strong>Downloads</strong>
+<ul>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/releases/tag/v4.08c">Release 4.08c</a>
+</li>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/releases">All releases</a></li>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/archive/master.zip">Current devel</a></li>
+<li><a href="https://raw.githubusercontent.com/AFLplusplus/AFLplusplus/master/docs/COPYING">License</a></li>
+</ul>
+</li>
+<li><strong>Links</strong>
+<ul>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus">Repo (GitHub)</a></li>
+<li><a href="https://opencollective.com/AFLplusplusEU">Donations</a></li>
+<li><a href="https://groups.google.com/group/afl-users">Mailing list</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>The AFL&#43;&#43; fuzzing framework</strong>
+
+  <label for="toc-control">
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+<article class="markdown"><h1 id="afl-overview">AFL++ Overview</h1>
+<p>AFLplusplus is the daughter of the <a href="http://lcamtuf.coredump.cx/afl/">American Fuzzy Lop</a> fuzzer by Michał &ldquo;lcamtuf&rdquo; Zalewski and was created initially to incorporate all the best features developed in the years for the fuzzers in the AFL family and not merged in AFL cause it is not updated since November 2017.</p>
+<p><img src="https://aflplus.plus//screenshot2.png" alt="screen1"></p>
+<p>The AFL++ fuzzing framework includes the following:</p>
+<ul>
+<li>A fuzzer with many mutators and configurations: afl-fuzz.</li>
+<li>Different source code instrumentation modules: LLVM mode, afl-as, GCC plugin.</li>
+<li>Different binary code instrumentation modules: QEMU mode, Unicorn mode, QBDI mode.</li>
+<li>Utilities for testcase/corpus minimization: afl-tmin, afl-cmin.</li>
+<li>Helper libraries: libtokencap, libdislocator, libcompcov.</li>
+</ul>
+<p>It includes a lot of changes, optimizations and new features respect to AFL like the AFLfast power schedules, QEMU 5.1 upgrade with CompareCoverage, MOpt mutators, InsTrim instrumentation and a lot more.</p>
+<p>See the <a href="/features/">Features</a> page.</p>
+<p>If you are a student or enthusiast developer and want to contribute, we have an <a href="https://github.com/AFLplusplus/AFLplusplus/blob/master/docs/ideas.md">idea list</a> what would be cool to have! :-)</p>
+<p>If you want to acknoledge our work and the derived works by the academic community in your paper, see the <a href="/papers/">Papers</a> page.</p>
+<p>It is maintained by Marc &ldquo;van Hauser&rdquo; Heuse <a href="mailto:mh@mh-sec.de">mh@mh-sec.de</a>, Heiko &ldquo;hexcoder-&rdquo; Eißfeldt <a href="mailto:heiko.eissfeldt@hexco.de">heiko.eissfeldt@hexco.de</a>, Andrea Fioraldi <a href="mailto:andreafioraldi@gmail.com">andreafioraldi@gmail.com</a> and Dominik Maier <a href="mailto:mail@dmnk.co">mail@dmnk.co</a>.</p>
+<p>Check out the GitHub repository <a href="https://github.com/AFLplusplus/AFLplusplus">here</a>.</p>
+<h2 id="trophies">Trophies</h2>
+<ul>
+<li>VLC
+<ul>
+<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14437">CVE-2019-14437</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14438">CVE-2019-14438</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14498">CVE-2019-14498</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14533">CVE-2019-14533</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14534">CVE-2019-14534</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14535">CVE-2019-14535</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14776">CVE-2019-14776</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14777">CVE-2019-14777</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14778">CVE-2019-14778</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14779">CVE-2019-14779</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14970">CVE-2019-14970</a> by Antonio Morales (<a href="https://securitylab.github.com/research/vlc-vulnerability-heap-overflow">GitHub Security Lab</a>)</li>
+</ul>
+</li>
+<li>Sqlite
+<ul>
+<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-16168">CVE-2019-16168</a> by Xingwei Lin (Ant-Financial Light-Year Security Lab)</li>
+</ul>
+</li>
+<li>Vim
+<ul>
+<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-20079">CVE-2019-20079</a> by Dhiraj (<a href="https://www.inputzero.io/2020/03/fuzzing-vim.html">blog</a>)</li>
+</ul>
+</li>
+<li>Pure-FTPd
+<ul>
+<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-20176">CVE-2019-20176</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-14437">CVE-2020-9274</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-9365">CVE-2020-9365</a> by Antonio Morales (<a href="https://securitylab.github.com/research/fuzzing-sockets-FTP">GitHub Security Lab</a>)</li>
+</ul>
+</li>
+<li>Bftpd
+<ul>
+<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-6162">CVE-2020-6162</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-6835">CVE-2020-6835</a> by Antonio Morales (<a href="https://securitylab.github.com/research/fuzzing-sockets-FTP">GitHub Security Lab</a>)</li>
+</ul>
+</li>
+<li>Tcpdump
+<ul>
+<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-8036">CVE-2020-8036</a> by Reza Mirzazade</li>
+</ul>
+</li>
+<li>ProFTPd
+<ul>
+<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-9272">CVE-2020-9272</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-9273">CVE-2020-9273</a> by Antonio Morales (<a href="https://securitylab.github.com/research/fuzzing-sockets-FTP">GitHub Security Lab</a>)</li>
+</ul>
+</li>
+<li>Gifsicle
+<ul>
+<li><a href="https://github.com/kohler/gifsicle/issues/130">Issue 130</a> by Ashish Kunwar</li>
+</ul>
+</li>
+<li>FFmpeg
+<ul>
+<li><a href="https://trac.ffmpeg.org/ticket/8592">Ticket 8592</a> <a href="https://trac.ffmpeg.org/ticket/8593">Ticket 8593</a> <a href="https://trac.ffmpeg.org/ticket/8594">Ticket 8594</a> <a href="https://trac.ffmpeg.org/ticket/8596">Ticket 8596</a> by Andrea Fioraldi</li>
+<li><a href="https://trac.ffmpeg.org/ticket/9099">Ticket 9099</a> by Qiuhao Li</li>
+</ul>
+</li>
+<li>Glibc
+<ul>
+<li><a href="https://sourceware.org/bugzilla/show_bug.cgi?id=25933">Bug 25933</a> by David Mendenhall</li>
+</ul>
+</li>
+<li>FreeRDP
+<ul>
+<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11095">CVE-2020-11095</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11096">CVE-2020-11096</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11097">CVE-2020-11097</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11098">CVE-2020-11098</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11099">CVE-2020-11099</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-13397">CVE-2020-13397</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-13398">CVE-2020-13398</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-4030">CVE-2020-4030</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-4031">CVE-2020-4031</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-4032">CVE-2020-4032</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-4033">CVE-2020-4033</a> by Antonio Morales (<a href="https://securitylab.github.com/research/fuzzing-sockets-FreeRDP">GitHub Security Lab</a>)</li>
+</ul>
+</li>
+<li>GNOME
+<ul>
+<li><a href="https://gitlab.gnome.org/GNOME/libgxps/-/issues/3">Libxps issue 3</a> by Qiuhao Li</li>
+</ul>
+</li>
+<li>QEMU
+<ul>
+<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-29129">CVE-2020-29129</a> <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-29130">CVE-2020-29130</a> by Qiuhao Li</li>
+</ul>
+</li>
+<li>GNU coreutils
+<ul>
+<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1919775">Bug 1919775</a> by Qiuhao Li</li>
+</ul>
+</li>
+<li>PostgreSQL
+<ul>
+<li><a href="https://www.postgresql.org/message-id/7332649.x5DLKWyVIX%40thinkpad-pgpro">Crash while parsing zero-symbols in jsonb string</a> by Nikolay Shaplov (Postgres Professional)</li>
+</ul>
+</li>
+</ul>
+<h2 id="sponsoring">Sponsoring</h2>
+<p>We always need servers with many cores for testing various changes for the efficiency.
+If you want to sponsor a server with more than 20 cores - contact us! :-)</p>
+<p>Current sponsors:</p>
+<ul>
+<li><a href="https://www.fuzzing.io">Fuzzing IO</a> is sponsoring a 24 core server for one year, thank you! <img src="https://aflplus.plus//logo-fuzzing-io.png" alt="screen1"></li>
+</ul>
+</article>
+ 
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+      </footer>
+      
+    </div>
+
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

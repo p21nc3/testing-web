@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Parallel Fuzzing | AFLplusplus</title>
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+<meta property="og:title" content="Parallel Fuzzing | AFLplusplus" />
+<meta name="twitter:title" content="Parallel Fuzzing | AFLplusplus" />
+<meta itemprop="name" content="Parallel Fuzzing | AFLplusplus" />
+<meta name="application-name" content="Parallel Fuzzing | AFLplusplus" />
+<meta property="og:site_name" content="AFLplusplus" />
+
+<meta name="description" content="The AFLplusplus website" />
+<meta itemprop="description" content="The AFLplusplus website" />
+<meta property="og:description" content="The AFLplusplus website" />
+<meta name="twitter:description" content="The AFLplusplus website" />
+
+<base href="https://aflplus.plus/docs/parallel_fuzzing/">
+<link rel="canonical" href="https://aflplus.plus/docs/parallel_fuzzing/" itemprop="url" /> 
+<meta name="url" content="https://aflplus.plus/docs/parallel_fuzzing/" />
+<meta name="twitter:url" content="https://aflplus.plus/docs/parallel_fuzzing/" /> 
+<meta property="og:url" content="https://aflplus.plus/docs/parallel_fuzzing/" />
+
+ 
+  <meta itemprop="image" content="https://aflplus.plus/ogimage.png" />
+  <meta property="og:image" content="https://aflplus.plus/ogimage.png" /> 
+  <meta name="twitter:image" content="https://aflplus.plus/ogimage.png" />
+  <meta name="twitter:image:src" content="https://aflplus.plus/ogimage.png" /> 
+
+
+
+<link rel="stylesheet" href="/book.min.5f6934428064085210d9b92c20af9b09c67cef71f93fa65ebbc5af315512573d.css" integrity="sha256-X2k0QoBkCFIQ2bksIK&#43;bCcZ873H5P6Zeu8WvMVUSVz0=">
+
+
+<script defer src="/en.search.min.55d88fec982aa3f5097be652331046a67e9f15d3d98021ac28d1a4e98a7acee6.js" integrity="sha256-VdiP7Jgqo/UJe&#43;ZSMxBGpn6fFdPZgCGsKNGk6Yp6zuY="></script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><img src="/logo_256x256.png" alt="Logo" /><span>AFLplusplus</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+  <ul>
+<li><strong>Site map</strong>
+<ul>
+<li><a href="/features/">Features</a></li>
+<li><a href="/building/">Build &amp; Install</a></li>
+<li><a href="/docs/">Documentation</a></li>
+<li><a href="/docs/tutorials/">Tutorials</a></li>
+<li><a href="/papers/">Papers</a></li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li><strong>Downloads</strong>
+<ul>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/releases/tag/4.00c">Release 4.00c</a>
+</li>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/releases">All releases</a></li>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/archive/master.zip">Current devel</a></li>
+<li><a href="https://raw.githubusercontent.com/AFLplusplus/AFLplusplus/master/docs/COPYING">License</a></li>
+</ul>
+</li>
+<li><strong>Links</strong>
+<ul>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus">Repo (GitHub)</a></li>
+<li><a href="https://opencollective.com/AFLplusplusEU">Donations</a></li>
+<li><a href="https://groups.google.com/group/afl-users">Mailing list</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Parallel Fuzzing</strong>
+
+  <label for="toc-control">
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-introduction">1) Introduction</a></li>
+    <li><a href="#2-single-system-parallelization">2) Single-system parallelization</a></li>
+    <li><a href="#3-multiple--m-mains">3) Multiple -M mains</a></li>
+    <li><a href="#4-syncing-with-non-afl-fuzzers-or-independant-instances">4) Syncing with non-AFL fuzzers or independant instances</a></li>
+    <li><a href="#5-multi-system-parallelization">5) Multi-system parallelization</a></li>
+    <li><a href="#6-remote-monitoring-and-data-collection">6) Remote monitoring and data collection</a></li>
+    <li><a href="#7-asymmetric-setups">7) Asymmetric setups</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+<article class="markdown"><h1 id="tips-for-parallel-fuzzing">Tips for parallel fuzzing</h1>
+<p>This document talks about synchronizing afl-fuzz jobs on a single machine
+or across a fleet of systems. See README.md for the general instruction manual.</p>
+<p>Note that this document is rather outdated. please refer to the main document
+section on multiple core usage <a href="../README.md#b-using-multiple-coresthreads">../README.md#Using multiple cores</a>
+for up to date strategies!</p>
+<h2 id="1-introduction">1) Introduction</h2>
+<p>Every copy of afl-fuzz will take up one CPU core. This means that on an
+n-core system, you can almost always run around n concurrent fuzzing jobs with
+virtually no performance hit (you can use the afl-gotcpu tool to make sure).</p>
+<p>In fact, if you rely on just a single job on a multi-core system, you will
+be underutilizing the hardware. So, parallelization is always the right way to
+go.</p>
+<p>When targeting multiple unrelated binaries or using the tool in
+&ldquo;non-instrumented&rdquo; (-n) mode, it is perfectly fine to just start up several
+fully separate instances of afl-fuzz. The picture gets more complicated when
+you want to have multiple fuzzers hammering a common target: if a hard-to-hit
+but interesting test case is synthesized by one fuzzer, the remaining instances
+will not be able to use that input to guide their work.</p>
+<p>To help with this problem, afl-fuzz offers a simple way to synchronize test
+cases on the fly.</p>
+<p>Note that AFL++ has AFLfast&rsquo;s power schedules implemented.
+It is therefore a good idea to use different power schedules if you run
+several instances in parallel. See <a href="power_schedules.md">power_schedules.md</a></p>
+<p>Alternatively running other AFL spinoffs in parallel can be of value,
+e.g. Angora (<a href="https://github.com/AngoraFuzzer/Angora/">https://github.com/AngoraFuzzer/Angora/</a>)</p>
+<h2 id="2-single-system-parallelization">2) Single-system parallelization</h2>
+<p>If you wish to parallelize a single job across multiple cores on a local
+system, simply create a new, empty output directory (&ldquo;sync dir&rdquo;) that will be
+shared by all the instances of afl-fuzz; and then come up with a naming scheme
+for every instance - say, &ldquo;fuzzer01&rdquo;, &ldquo;fuzzer02&rdquo;, etc.</p>
+<p>Run the first one (&ldquo;main node&rdquo;, -M) like this:</p>
+<pre tabindex="0"><code>./afl-fuzz -i testcase_dir -o sync_dir -M fuzzer01 [...other stuff...]
+</code></pre><p>&hellip;and then, start up secondary (-S) instances like this:</p>
+<pre tabindex="0"><code>./afl-fuzz -i testcase_dir -o sync_dir -S fuzzer02 [...other stuff...]
+./afl-fuzz -i testcase_dir -o sync_dir -S fuzzer03 [...other stuff...]
+</code></pre><p>Each fuzzer will keep its state in a separate subdirectory, like so:</p>
+<p>/path/to/sync_dir/fuzzer01/</p>
+<p>Each instance will also periodically rescan the top-level sync directory
+for any test cases found by other fuzzers - and will incorporate them into
+its own fuzzing when they are deemed interesting enough.
+For performance reasons only -M main node syncs the queue with everyone, the
+-S secondary nodes will only sync from the main node.</p>
+<p>The difference between the -M and -S modes is that the main instance will
+still perform deterministic checks; while the secondary instances will
+proceed straight to random tweaks.</p>
+<p>Note that you must always have one -M main instance!
+Running multiple -M instances is wasteful!</p>
+<p>You can also monitor the progress of your jobs from the command line with the
+provided afl-whatsup tool. When the instances are no longer finding new paths,
+it&rsquo;s probably time to stop.</p>
+<p>WARNING: Exercise caution when explicitly specifying the -f option. Each fuzzer
+must use a separate temporary file; otherwise, things will go south. One safe
+example may be:</p>
+<pre tabindex="0"><code>./afl-fuzz [...] -S fuzzer10 -f file10.txt ./fuzzed/binary @@
+./afl-fuzz [...] -S fuzzer11 -f file11.txt ./fuzzed/binary @@
+./afl-fuzz [...] -S fuzzer12 -f file12.txt ./fuzzed/binary @@
+</code></pre><p>This is not a concern if you use @@ without -f and let afl-fuzz come up with the
+file name.</p>
+<h2 id="3-multiple--m-mains">3) Multiple -M mains</h2>
+<p>There is support for parallelizing the deterministic checks.
+This is only needed where</p>
+<ol>
+<li>many new paths are found fast over a long time and it looks unlikely that
+main node will ever catch up, and</li>
+<li>deterministic fuzzing is actively helping path discovery (you can see this
+in the main node for the first for lines in the &ldquo;fuzzing strategy yields&rdquo;
+section. If the ration <code>found/attemps</code> is high, then it is effective. It
+most commonly isn&rsquo;t.)</li>
+</ol>
+<p>Only if both are true it is beneficial to have more than one main.
+You can leverage this by creating -M instances like so:</p>
+<pre tabindex="0"><code>./afl-fuzz -i testcase_dir -o sync_dir -M mainA:1/3 [...]
+./afl-fuzz -i testcase_dir -o sync_dir -M mainB:2/3 [...]
+./afl-fuzz -i testcase_dir -o sync_dir -M mainC:3/3 [...]
+</code></pre><p>&hellip; where the first value after &lsquo;:&rsquo; is the sequential ID of a particular main
+instance (starting at 1), and the second value is the total number of fuzzers to
+distribute the deterministic fuzzing across. Note that if you boot up fewer
+fuzzers than indicated by the second number passed to -M, you may end up with
+poor coverage.</p>
+<h2 id="4-syncing-with-non-afl-fuzzers-or-independant-instances">4) Syncing with non-AFL fuzzers or independant instances</h2>
+<p>A -M main node can be told with the <code>-F other_fuzzer_queue_directory</code> option
+to sync results from other fuzzers, e.g. libfuzzer or honggfuzz.</p>
+<p>Only the specified directory will by synced into afl, not subdirectories.
+The specified directory does not need to exist yet at the start of afl.</p>
+<p>The <code>-F</code> option can be passed to the main node several times.</p>
+<h2 id="5-multi-system-parallelization">5) Multi-system parallelization</h2>
+<p>The basic operating principle for multi-system parallelization is similar to
+the mechanism explained in section 2. The key difference is that you need to
+write a simple script that performs two actions:</p>
+<ul>
+<li>
+<p>Uses SSH with authorized_keys to connect to every machine and retrieve
+a tar archive of the /path/to/sync_dir/&lt;main_node(s)&gt; directory local to
+the machine.
+It is best to use a naming scheme that includes host name and it&rsquo;s being
+a main node (e.g. main1, main2) in the fuzzer ID, so that you can do
+something like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> host in <span style="color:#e6db74">`</span>cat HOSTLIST<span style="color:#e6db74">`</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  ssh user@$host <span style="color:#e6db74">&#34;tar -czf - sync/</span>$host_main<span style="color:#e6db74">*/&#34;</span> &gt; $host.tgz
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div></li>
+<li>
+<p>Distributes and unpacks these files on all the remaining machines, e.g.:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> srchost in <span style="color:#e6db74">`</span>cat HOSTLIST<span style="color:#e6db74">`</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> dsthost in <span style="color:#e6db74">`</span>cat HOSTLIST<span style="color:#e6db74">`</span>; <span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>    test <span style="color:#e6db74">&#34;</span>$srchost<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span>$dsthost<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>    ssh user@$srchost <span style="color:#e6db74">&#39;tar -kxzf -&#39;</span> &lt; $dsthost.tgz
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">done</span>
+</span></span></code></pre></div></li>
+</ul>
+<p>There is an example of such a script in utils/distributed_fuzzing/.</p>
+<p>There are other (older) more featured, experimental tools:</p>
+<ul>
+<li><a href="https://github.com/richo/roving">https://github.com/richo/roving</a></li>
+<li><a href="https://github.com/MartijnB/disfuzz-afl">https://github.com/MartijnB/disfuzz-afl</a></li>
+</ul>
+<p>However these do not support syncing just main nodes (yet).</p>
+<p>When developing custom test case sync code, there are several optimizations
+to keep in mind:</p>
+<ul>
+<li>
+<p>The synchronization does not have to happen very often; running the
+task every 60 minutes or even less often at later fuzzing stages is
+fine</p>
+</li>
+<li>
+<p>There is no need to synchronize crashes/ or hangs/; you only need to
+copy over queue/* (and ideally, also fuzzer_stats).</p>
+</li>
+<li>
+<p>It is not necessary (and not advisable!) to overwrite existing files;
+the -k option in tar is a good way to avoid that.</p>
+</li>
+<li>
+<p>There is no need to fetch directories for fuzzers that are not running
+locally on a particular machine, and were simply copied over onto that
+system during earlier runs.</p>
+</li>
+<li>
+<p>For large fleets, you will want to consolidate tarballs for each host,
+as this will let you use n SSH connections for sync, rather than n*(n-1).</p>
+<p>You may also want to implement staged synchronization. For example, you
+could have 10 groups of systems, with group 1 pushing test cases only
+to group 2; group 2 pushing them only to group 3; and so on, with group
+eventually 10 feeding back to group 1.</p>
+<p>This arrangement would allow test interesting cases to propagate across
+the fleet without having to copy every fuzzer queue to every single host.</p>
+</li>
+<li>
+<p>You do not want a &ldquo;main&rdquo; instance of afl-fuzz on every system; you should
+run them all with -S, and just designate a single process somewhere within
+the fleet to run with -M.</p>
+</li>
+<li>
+<p>Syncing is only necessary for the main nodes on a system. It is possible
+to run main-less with only secondaries. However then you need to find out
+which secondary took over the temporary role to be the main node. Look for
+the <code>is_main_node</code> file in the fuzzer directories, eg. <code>sync-dir/hostname-*/is_main_node</code></p>
+</li>
+</ul>
+<p>It is <em>not</em> advisable to skip the synchronization script and run the fuzzers
+directly on a network filesystem; unexpected latency and unkillable processes
+in I/O wait state can mess things up.</p>
+<h2 id="6-remote-monitoring-and-data-collection">6) Remote monitoring and data collection</h2>
+<p>You can use screen, nohup, tmux, or something equivalent to run remote
+instances of afl-fuzz. If you redirect the program&rsquo;s output to a file, it will
+automatically switch from a fancy UI to more limited status reports. There is
+also basic machine-readable information which is always written to the
+fuzzer_stats file in the output directory. Locally, that information can be
+interpreted with afl-whatsup.</p>
+<p>In principle, you can use the status screen of the main (-M) instance to
+monitor the overall fuzzing progress and decide when to stop. In this
+mode, the most important signal is just that no new paths are being found
+for a longer while. If you do not have a main instance, just pick any
+single secondary instance to watch and go by that.</p>
+<p>You can also rely on that instance&rsquo;s output directory to collect the
+synthesized corpus that covers all the noteworthy paths discovered anywhere
+within the fleet. Secondary (-S) instances do not require any special
+monitoring, other than just making sure that they are up.</p>
+<p>Keep in mind that crashing inputs are <em>not</em> automatically propagated to the
+main instance, so you may still want to monitor for crashes fleet-wide
+from within your synchronization or health checking scripts (see afl-whatsup).</p>
+<h2 id="7-asymmetric-setups">7) Asymmetric setups</h2>
+<p>It is perhaps worth noting that all of the following is permitted:</p>
+<ul>
+<li>
+<p>Running afl-fuzz with conjunction with other guided tools that can extend
+coverage (e.g., via concolic execution). Third-party tools simply need to
+follow the protocol described above for pulling new test cases from
+out_dir/&lt;fuzzer_id&gt;/queue/* and writing their own finds to sequentially
+numbered id:nnnnnn files in out_dir/&lt;ext_tool_id&gt;/queue/*.</p>
+</li>
+<li>
+<p>Running some of the synchronized fuzzers with different (but related)
+target binaries. For example, simultaneously stress-testing several
+different JPEG parsers (say, IJG jpeg and libjpeg-turbo) while sharing
+the discovered test cases can have synergistic effects and improve the
+overall coverage.</p>
+<p>(In this case, running one -M instance per target is necessary.)</p>
+</li>
+<li>
+<p>Having some of the fuzzers invoke the binary in different ways.
+For example, &lsquo;djpeg&rsquo; supports several DCT modes, configurable with
+a command-line flag, while &lsquo;dwebp&rsquo; supports incremental and one-shot
+decoding. In some scenarios, going after multiple distinct modes and then
+pooling test cases will improve coverage.</p>
+</li>
+<li>
+<p>Much less convincingly, running the synchronized fuzzers with different
+starting test cases (e.g., progressive and standard JPEG) or dictionaries.
+The synchronization mechanism ensures that the test sets will get fairly
+homogeneous over time, but it introduces some initial variability.</p>
+</li>
+</ul>
+</article>
+ 
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+      </footer>
+      
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-introduction">1) Introduction</a></li>
+    <li><a href="#2-single-system-parallelization">2) Single-system parallelization</a></li>
+    <li><a href="#3-multiple--m-mains">3) Multiple -M mains</a></li>
+    <li><a href="#4-syncing-with-non-afl-fuzzers-or-independant-instances">4) Syncing with non-AFL fuzzers or independant instances</a></li>
+    <li><a href="#5-multi-system-parallelization">5) Multi-system parallelization</a></li>
+    <li><a href="#6-remote-monitoring-and-data-collection">6) Remote monitoring and data collection</a></li>
+    <li><a href="#7-asymmetric-setups">7) Asymmetric setups</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

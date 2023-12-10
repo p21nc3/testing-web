@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AFLplusplus</title>
+    <link>https://aflplus.plus/docs/</link>
+    <description>Recent content on AFLplusplus</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://aflplus.plus/docs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://aflplus.plus/docs/afl-fuzz_approach/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aflplus.plus/docs/afl-fuzz_approach/</guid>
+      <description>The afl-fuzz approach AFL++ is a brute-force fuzzer coupled with an exceedingly simple but rock-solid instrumentation-guided genetic algorithm. It uses a modified form of edge coverage to effortlessly pick up subtle, local-scale changes to program control flow.
+Simplifying a bit, the overall algorithm can be summed up as:
+  Load user-supplied initial test cases into the queue.
+  Take the next input file from the queue.
+  Attempt to trim the test case to the smallest size that doesn&amp;rsquo;t alter the measured behavior of the program.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://aflplus.plus/docs/best_practices/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aflplus.plus/docs/best_practices/</guid>
+      <description>Best practices Contents Targets  Fuzzing a target with source code available Fuzzing a target with dlopen() instrumented libraries Fuzzing a binary-only target Fuzzing a GUI program Fuzzing a network service  Improvements  Improving speed Improving stability  Targets Fuzzing a target with source code available To learn how to fuzz a target if source code is available, see /docs/fuzzing_in_depth/.
+Fuzzing a target with dlopen instrumented libraries If a source code based fuzzing target loads instrumented libraries with dlopen() after the forkserver has been activated and non-colliding coverage instrumentation is used (PCGUARD (which is the default), or LTO), then this an issue, because this would enlarge the coverage map, but afl-fuzz doesn&amp;rsquo;t know about it.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://aflplus.plus/docs/changelog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aflplus.plus/docs/changelog/</guid>
+      <description>Changelog This is the list of all noteworthy changes made in every public release of the tool. See README.md for the general instruction manual.
+Version ++4.09a (dev)  afl-fuzz:  added AFL_FINAL_SYNC which forces a final fuzzer sync (also for -F) before terminating. added AFL_IGNORE_SEED_PROBLEMS to skip over seeds that time out instead of exiting with an error message allow -S/-M naming up to 50 characters (from 24)   afl-whatsup:  detect instanced that are starting up and show them as such as not dead now also shows coverage reached option -m shows only very relevant stats option -n will not use color in the output   instrumentation:  fix for a few string compare transform functions for LAF   frida_mode:  fixes support for large map offsets   added new tool afl-addseeds that adds new seeds to a running campaign added benchmark/benchmark.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://aflplus.plus/docs/custom_mutators/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aflplus.plus/docs/custom_mutators/</guid>
+      <description>Custom Mutators in AFL++ This file describes how you can implement custom mutations to be used in AFL. For now, we support C/C++ library and Python module, collectively named as the custom mutator.
+There is also experimental support for Rust in custom_mutators/rust. For documentation, refer to that directory. Run cargo doc -p custom_mutator --open in that directory to view the documentation in your web browser.
+Implemented by
+ C/C++ library (*.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://aflplus.plus/docs/env_variables/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aflplus.plus/docs/env_variables/</guid>
+      <description>Environment variables This document discusses the environment variables used by AFL++ to expose various exotic functions that may be (rarely) useful for power users or for some types of custom fuzzing setups. For general information about AFL++, see README.md.
+Note: Most tools will warn on any unknown AFL++ environment variables; for example, because of typos. If you want to disable this check, then set the AFL_IGNORE_UNKNOWN_ENVS environment variable.
+1) Settings for all compilers Starting with AFL++ 3.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://aflplus.plus/docs/faq/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aflplus.plus/docs/faq/</guid>
+      <description>Frequently asked questions (FAQ) If you find an interesting or important question missing, submit it via https://github.com/AFLplusplus/AFLplusplus/discussions.
+General AFL++ is a superior fork to Google&amp;rsquo;s AFL - more speed, more and better mutations, more and better instrumentation, custom module support, etc.
+American Fuzzy Lop (AFL) was developed by Michał &amp;ldquo;lcamtuf&amp;rdquo; Zalewski starting in 2013/2014, and when he left Google end of 2017 he stopped developing it.
+At the end of 2019, the Google fuzzing team took over maintenance of AFL, however, it is only accepting PRs from the community and is not developing enhancements anymore.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://aflplus.plus/docs/features/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aflplus.plus/docs/features/</guid>
+      <description>Important features of AFL++ AFL++ supports llvm from 3.8 up to version 12, very fast binary fuzzing with QEMU 5.1 with laf-intel and Redqueen, FRIDA mode, unicorn mode, gcc plugin, full *BSD, Mac OS, Solaris and Android support and much, much, much more.
+Features and instrumentation    Feature/Instrumentation afl-gcc llvm gcc_plugin FRIDA mode(9) QEMU mode(10) unicorn_mode(10) nyx_mode(12) coresight_mode(11)     Threadsafe counters [A]  x(3)     x    NeverZero [B] x86[_64] x(1) x x x x     Persistent Mode [C]  x x x86[_64]/arm64 x86[_64]/arm[64] x     LAF-Intel / CompCov [D]  x   x86[_64]/arm[64] x86[_64]/arm[64] x86[_64]    CmpLog [E]  x x x86[_64]/arm64 x86[_64]/arm[64]      Selective Instrumentation [F]  x x x x      Non-Colliding Coverage [G]  x(4)   (x)(5)      Ngram prev_loc Coverage [H]  x(6)         Context Coverage [I]  x(6)         Auto Dictionary [J]  x(7)         Snapshot Support [K]  (x)(8) (x)(8)  (x)(5)  x    Shared Memory Test cases [L]  x x x86[_64]/arm64 x x x     More information about features A.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://aflplus.plus/docs/fuzzing_binary-only_targets/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aflplus.plus/docs/fuzzing_binary-only_targets/</guid>
+      <description>Fuzzing binary-only targets AFL++, libfuzzer, and other fuzzers are great if you have the source code of the target. This allows for very fast and coverage guided fuzzing.
+However, if there is only the binary program and no source code available, then standard afl-fuzz -n (non-instrumented mode) is not effective.
+For fast, on-the-fly instrumentation of black-box binaries, AFL++ still offers various support. The following is a description of how these binaries can be fuzzed with AFL++.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://aflplus.plus/docs/fuzzing_in_depth/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aflplus.plus/docs/fuzzing_in_depth/</guid>
+      <description>Fuzzing with AFL++ The following describes how to fuzz with a target if source code is available. If you have a binary-only target, go to /docs/fuzzing_binary-only_targets/.
+Fuzzing source code is a three-step process:
+ Compile the target with a special compiler that prepares the target to be fuzzed efficiently. This step is called &amp;ldquo;instrumenting a target&amp;rdquo;. Prepare the fuzzing by selecting and optimizing the input corpus for the target. Perform the fuzzing of the target by randomly mutating input and assessing if that input was processed on a new path in the target binary.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://aflplus.plus/docs/ideas/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aflplus.plus/docs/ideas/</guid>
+      <description>Ideas for AFL++ In the following, we describe a variety of ideas that could be implemented for future AFL++ versions.
+NOTE: Our GSoC participation is concerning libafl, not AFL++.
+Analysis software Currently analysis is done by using afl-plot, which is rather outdated. A GTK or browser tool to create run-time analysis based on fuzzer_stats, queue/id* information and plot_data that allows for zooming in and out, changing min/max display values etc. and doing that for a single run, different runs and campaigns vs.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://aflplus.plus/docs/important_changes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aflplus.plus/docs/important_changes/</guid>
+      <description>Important changes in AFL++ This document lists important changes in AFL++, for example, major behavior changes.
+From version 3.00 onwards With AFL++ 4.00, we introduced the following changes from previous behaviors:
+ the complete documentation was overhauled and restructured thanks to @llzmb! a new CMPLOG target format requires recompiling CMPLOG targets for use with AFL++ 4.0 onwards better naming for several fields in the UI  With AFL++ 3.15, we introduced the following changes from previous behaviors:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://aflplus.plus/docs/install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aflplus.plus/docs/install/</guid>
+      <description>Building and installing AFL++ Linux on x86 An easy way to install AFL++ with everything compiled is available via docker: You can use the Dockerfile or just pull directly from the Docker Hub (for x86_64 and arm64):
+docker pull aflplusplus/aflplusplus: docker run -ti -v /location/of/your/target:/src aflplusplus/aflplusplus This image is automatically generated when a push to the stable branch happens. You will find your target source code in /src in the container.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://aflplus.plus/docs/readme/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aflplus.plus/docs/readme/</guid>
+      <description>AFL++ documentation This is the overview of the AFL++ docs content.
+For general information on AFL++, see the README.md of the repository.
+Also take a look at our /docs/faq/ and /docs/best_practices/.
+Fuzzing targets with the source code available You can find a quickstart for fuzzing targets with the source code available in the README.md of the repository.
+For in-depth information on the steps of the fuzzing process, see /docs/fuzzing_in_depth/ or click on the following image and select a step.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://aflplus.plus/docs/rpc_statsd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aflplus.plus/docs/rpc_statsd/</guid>
+      <description>Remote monitoring and metrics visualization AFL++ can send out metrics as StatsD messages. For remote monitoring and visualization of the metrics, you can set up a tool chain. For example, with Prometheus and Grafana. All tools are free and open source.
+This enables you to create nice and readable dashboards containing all the information you need on your fuzzer instances. There is no need to write your own statistics parsing system, deploy and maintain it to all your instances, and sync with your graph rendering system.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://aflplus.plus/docs/third_party_tools/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aflplus.plus/docs/third_party_tools/</guid>
+      <description>Tools that help fuzzing with AFL++ AFL++ and other development languages  afl-rs - AFL++ for RUST WASM - AFL++ for WASM  Speeding up fuzzing  libfiowrapper - if the function you want to fuzz requires loading a file, this allows using the shared memory test case feature :-) - recommended.  Minimization of test cases  afl-pytmin - a wrapper for afl-tmin that tries to speed up the process of minimization of a single test case by using many CPU cores.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://aflplus.plus/docs/tutorials/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aflplus.plus/docs/tutorials/</guid>
+      <description>Tutorials If you are a total newbie, try this guide:
+ https://github.com/alex-maleno/Fuzzing-Module  Here are some good write-ups to show how to effectively use AFL++:
+ https://aflplus.plus/docs/tutorials/libxml2_tutorial/ https://bananamafia.dev/post/gb-fuzz/ https://bushido-sec.com/index.php/2023/06/19/the-art-of-fuzzing/ https://securitylab.github.com/research/fuzzing-challenges-solutions-1 https://securitylab.github.com/research/fuzzing-software-2 https://securitylab.github.com/research/fuzzing-sockets-FTP https://securitylab.github.com/research/fuzzing-sockets-FreeRDP https://securitylab.github.com/research/fuzzing-apache-1 https://mmmds.pl/fuzzing-map-parser-part-1-teeworlds/  If you do not want to follow a tutorial but rather try an exercise type of training, then we can highly recommend the following:
+ https://github.com/antonio-morales/Fuzzing101  Here is a good forkflow description (and tutorial) for qemu_mode:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://aflplus.plus/docs/tutorials/libxml2_tutorial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://aflplus.plus/docs/tutorials/libxml2_tutorial/</guid>
+      <description>Fuzzing libxml2 with AFL++ Before starting, build AFL++ LLVM mode and QEMU mode.
+I assume that the path to AFL++ is ~/AFLplusplus, change it in the commands if your installation path is different.
+Download the source of libxml2 with
+$ git clone https://gitlab.gnome.org/GNOME/libxml2.git $ cd libxml2 Now configure it disabling the shared libraries
+$ ./autogen.sh $ ./configure --enable-shared=no If you want to enable the sanitizers, use the proper env var.</description>
+    </item>
+    
+  </channel>
+</rss>

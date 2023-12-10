@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Rpc Statsd | AFLplusplus</title>
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+
+<meta property="og:title" content="Rpc Statsd | AFLplusplus" />
+<meta name="twitter:title" content="Rpc Statsd | AFLplusplus" />
+<meta itemprop="name" content="Rpc Statsd | AFLplusplus" />
+<meta name="application-name" content="Rpc Statsd | AFLplusplus" />
+<meta property="og:site_name" content="AFLplusplus" />
+
+<meta name="description" content="The AFLplusplus website" />
+<meta itemprop="description" content="The AFLplusplus website" />
+<meta property="og:description" content="The AFLplusplus website" />
+<meta name="twitter:description" content="The AFLplusplus website" />
+
+<base href="https://aflplus.plus/docs/rpc_statsd/">
+<link rel="canonical" href="https://aflplus.plus/docs/rpc_statsd/" itemprop="url" /> 
+<meta name="url" content="https://aflplus.plus/docs/rpc_statsd/" />
+<meta name="twitter:url" content="https://aflplus.plus/docs/rpc_statsd/" /> 
+<meta property="og:url" content="https://aflplus.plus/docs/rpc_statsd/" />
+
+ 
+  <meta itemprop="image" content="https://aflplus.plus/ogimage.png" />
+  <meta property="og:image" content="https://aflplus.plus/ogimage.png" /> 
+  <meta name="twitter:image" content="https://aflplus.plus/ogimage.png" />
+  <meta name="twitter:image:src" content="https://aflplus.plus/ogimage.png" /> 
+
+
+
+<link rel="stylesheet" href="/book.min.5f6934428064085210d9b92c20af9b09c67cef71f93fa65ebbc5af315512573d.css" integrity="sha256-X2k0QoBkCFIQ2bksIK&#43;bCcZ873H5P6Zeu8WvMVUSVz0=">
+
+
+<script defer src="/en.search.min.2121dd144f56093f39999e12ac94e2894ddc6fba97b269735113a9d4958a1a25.js" integrity="sha256-ISHdFE9WCT85mZ4SrJTiiU3cb7qXsmlzUROp1JWKGiU="></script>
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/"><img src="/aflpp_logo_256x256_w.png" alt="Logo" /><span>AFLplusplus</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+  <ul>
+<li><strong>Site map</strong>
+<ul>
+<li><a href="/features/">Features</a></li>
+<li><a href="/building/">Build &amp; Install</a></li>
+<li><a href="/docs/">Documentation</a></li>
+<li><a href="/docs/tutorials/">Tutorials</a></li>
+<li><a href="/papers/">Papers</a></li>
+<li><a href="https://aflplus.plus/libafl-book/">LibAFL Book</a></li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
+<li><strong>Downloads</strong>
+<ul>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/releases/tag/v4.08c">Release 4.08c</a>
+</li>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/releases">All releases</a></li>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus/archive/master.zip">Current devel</a></li>
+<li><a href="https://raw.githubusercontent.com/AFLplusplus/AFLplusplus/master/docs/COPYING">License</a></li>
+</ul>
+</li>
+<li><strong>Links</strong>
+<ul>
+<li><a href="https://github.com/AFLplusplus/AFLplusplus">Repo (GitHub)</a></li>
+<li><a href="https://opencollective.com/AFLplusplusEU">Donations</a></li>
+<li><a href="https://groups.google.com/group/afl-users">Mailing list</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+</nav>
+
+
+<script>
+(function() {
+  var menu = document.querySelector("aside.book-menu nav");
+  addEventListener("beforeunload", function(event) {
+    localStorage.setItem("menu.scrollTop", menu.scrollTop);
+  });
+  menu.scrollTop = localStorage.getItem("menu.scrollTop");
+})();
+</script>
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Rpc Statsd</strong>
+
+  <label for="toc-control">
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#afl-metrics-and-statsd">AFL++ metrics and StatsD</a></li>
+    <li><a href="#setting-environment-variables-in-afl">Setting environment variables in AFL++</a></li>
+    <li><a href="#installing-and-setting-up-statsd-prometheus-and-grafana">Installing and setting up StatsD, Prometheus, and Grafana</a></li>
+    <li><a href="#running-afl-with-statsd">Running AFL++ with StatsD</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+<article class="markdown"><h1 id="remote-monitoring-and-metrics-visualization">Remote monitoring and metrics visualization</h1>
+<p>AFL++ can send out metrics as StatsD messages. For remote monitoring and
+visualization of the metrics, you can set up a tool chain. For example, with
+Prometheus and Grafana. All tools are free and open source.</p>
+<p>This enables you to create nice and readable dashboards containing all the
+information you need on your fuzzer instances. There is no need to write your
+own statistics parsing system, deploy and maintain it to all your instances, and
+sync with your graph rendering system.</p>
+<p>Compared to the default integrated UI of AFL++, this can help you to visualize
+trends and the fuzzing state over time. You might be able to see when the
+fuzzing process has reached a state of no progress and visualize what are the
+&ldquo;best strategies&rdquo; for your targets (according to your own criteria). You can do
+so without logging into each instance individually.</p>
+<p><img src="https://github.com/AFLplusplus/AFLplusplus/blob/stable/docs/resources/statsd-grafana.png" alt="example visualization with Grafana"></p>
+<p>This is an example visualization with Grafana. The dashboard can be imported
+with <a href="https://github.com/AFLplusplus/AFLplusplus/blob/stable/docs/resources/grafana-afl++.json">this JSON template</a>.</p>
+<h2 id="afl-metrics-and-statsd">AFL++ metrics and StatsD</h2>
+<p>StatsD allows you to receive and aggregate metrics from a wide range of
+applications and retransmit them to a backend of your choice.</p>
+<p>From AFL++, StatsD can receive the following metrics:</p>
+<ul>
+<li>cur_item</li>
+<li>cycle_done</li>
+<li>cycles_wo_finds</li>
+<li>edges_found</li>
+<li>execs_done</li>
+<li>execs_per_sec</li>
+<li>havoc_expansion</li>
+<li>max_depth</li>
+<li>corpus_favored</li>
+<li>corpus_found</li>
+<li>corpus_imported</li>
+<li>corpus_count</li>
+<li>pending_favs</li>
+<li>pending_total</li>
+<li>slowest_exec_ms</li>
+<li>total_crashes</li>
+<li>saved_crashes</li>
+<li>saved_hangs</li>
+<li>var_byte_count</li>
+<li>corpus_variable</li>
+</ul>
+<p>Depending on your StatsD server, you will be able to monitor, trigger alerts, or
+perform actions based on these metrics (for example: alert on slow exec/s for a
+new build, threshold of crashes, time since last crash &gt; X, and so on).</p>
+<h2 id="setting-environment-variables-in-afl">Setting environment variables in AFL++</h2>
+<ol>
+<li>
+<p>To enable the StatsD metrics collection on your fuzzer instances, set the
+environment variable <code>AFL_STATSD=1</code>. By default, AFL++ will send the metrics
+over UDP to 127.0.0.1:8125.</p>
+</li>
+<li>
+<p>To enable tags for each metric based on their format (banner and
+afl_version), set the environment variable <code>AFL_STATSD_TAGS_FLAVOR</code>. By
+default, no tags will be added to the metrics.</p>
+<p>The available values are the following:</p>
+<ul>
+<li><code>dogstatsd</code></li>
+<li><code>influxdb</code></li>
+<li><code>librato</code></li>
+<li><code>signalfx</code></li>
+</ul>
+<p>For more information on environment variables, see
+<a href="/docs/env_variables/">/docs/env_variables/</a>.</p>
+<p>Note: When using multiple fuzzer instances with StatsD it is <em>strongly</em>
+recommended to set up <code>AFL_STATSD_TAGS_FLAVOR</code> to match your StatsD server.
+This will allow you to see individual fuzzer performance, detect bad ones,
+and see the progress of each strategy.</p>
+</li>
+<li>
+<p>Optional: To set the host and port of your StatsD daemon, set
+<code>AFL_STATSD_HOST</code> and <code>AFL_STATSD_PORT</code>. The default values are <code>localhost</code>
+and <code>8125</code>.</p>
+</li>
+</ol>
+<h2 id="installing-and-setting-up-statsd-prometheus-and-grafana">Installing and setting up StatsD, Prometheus, and Grafana</h2>
+<p>The easiest way to install and set up the infrastructure is with Docker and
+Docker Compose.</p>
+<p>Depending on your fuzzing setup and infrastructure, you may not want to run
+these applications on your fuzzer instances. This setup may be modified before
+use in a production environment; for example, adding passwords, creating volumes
+for storage, tweaking the metrics gathering to get host metrics (CPU, RAM, and
+so on).</p>
+<p>For all your fuzzing instances, only one instance of Prometheus and Grafana is
+required. The
+<a href="https://registry.hub.docker.com/r/prom/statsd-exporter">statsd exporter</a>
+converts the StatsD metrics to Prometheus. If you are using a provider that
+supports StatsD directly, you can skip this part of the setup.&rdquo;</p>
+<p>You can create and move the infrastructure files into a directory of your
+choice. The directory will store all the required configuration files.</p>
+<p>To install and set up Prometheus and Grafana:</p>
+<ol>
+<li>
+<p>Install Docker and Docker Compose:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+</code></pre></div></li>
+<li>
+<p>Create a <code>docker-compose.yml</code> containing the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">version</span>: <span style="color:#e6db74">&#39;3&#39;</span>
+
+<span style="color:#66d9ef">networks</span>:
+  <span style="color:#66d9ef">statsd-net</span>:
+    <span style="color:#66d9ef">driver</span>: bridge
+
+<span style="color:#66d9ef">services</span>:
+  <span style="color:#66d9ef">prometheus</span>:
+    <span style="color:#66d9ef">image</span>: prom/prometheus
+    <span style="color:#66d9ef">container_name</span>: prometheus
+    <span style="color:#66d9ef">volumes</span>:
+      - ./prometheus.yml:/prometheus.yml
+    <span style="color:#66d9ef">command</span>:
+      - <span style="color:#e6db74">&#39;--config.file=/prometheus.yml&#39;</span>
+    <span style="color:#66d9ef">restart</span>: unless-stopped
+    <span style="color:#66d9ef">ports</span>:
+      - <span style="color:#e6db74">&#34;9090:9090&#34;</span>
+    <span style="color:#66d9ef">networks</span>:
+      - statsd-net
+
+  <span style="color:#66d9ef">statsd_exporter</span>:
+    <span style="color:#66d9ef">image</span>: prom/statsd-exporter
+    <span style="color:#66d9ef">container_name</span>: statsd_exporter
+    <span style="color:#66d9ef">volumes</span>:
+      - ./statsd_mapping.yml:/statsd_mapping.yml
+    <span style="color:#66d9ef">command</span>:
+      - <span style="color:#e6db74">&#34;--statsd.mapping-config=/statsd_mapping.yml&#34;</span>
+    <span style="color:#66d9ef">ports</span>:
+      - <span style="color:#e6db74">&#34;9102:9102/tcp&#34;</span>
+      - <span style="color:#e6db74">&#34;8125:9125/udp&#34;</span>
+    <span style="color:#66d9ef">networks</span>:
+      - statsd-net
+
+  <span style="color:#66d9ef">grafana</span>:
+    <span style="color:#66d9ef">image</span>: grafana/grafana
+    <span style="color:#66d9ef">container_name</span>: grafana
+    <span style="color:#66d9ef">restart</span>: unless-stopped
+    <span style="color:#66d9ef">ports</span>:
+        - <span style="color:#e6db74">&#34;3000:3000&#34;</span>
+    <span style="color:#66d9ef">networks</span>:
+      - statsd-net
+</code></pre></div></li>
+<li>
+<p>Create a <code>prometheus.yml</code> containing the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">global</span>:
+  <span style="color:#66d9ef">scrape_interval</span>:      15s
+  <span style="color:#66d9ef">evaluation_interval</span>:  15s
+
+<span style="color:#66d9ef">scrape_configs</span>:
+  - <span style="color:#66d9ef">job_name</span>: <span style="color:#e6db74">&#39;fuzzing_metrics&#39;</span>
+    <span style="color:#66d9ef">static_configs</span>:
+      - <span style="color:#66d9ef">targets</span>: [<span style="color:#e6db74">&#39;statsd_exporter:9102&#39;</span>]
+</code></pre></div></li>
+<li>
+<p>Create a <code>statsd_mapping.yml</code> containing the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">mappings</span>:
+- <span style="color:#66d9ef">match</span>: <span style="color:#e6db74">&#34;fuzzing.*&#34;</span>
+  <span style="color:#66d9ef">name</span>: <span style="color:#e6db74">&#34;fuzzing&#34;</span>
+  <span style="color:#66d9ef">labels</span>:
+      <span style="color:#66d9ef">type</span>: <span style="color:#e6db74">&#34;$1&#34;</span>
+</code></pre></div></li>
+<li>
+<p>Run <code>docker-compose up -d</code>.</p>
+</li>
+</ol>
+<h2 id="running-afl-with-statsd">Running AFL++ with StatsD</h2>
+<p>To run your fuzzing instances:</p>
+<pre><code>AFL_STATSD_TAGS_FLAVOR=dogstatsd AFL_STATSD=1 afl-fuzz -M test-fuzzer-1 -i i -o o [./bin/my-application] @@
+AFL_STATSD_TAGS_FLAVOR=dogstatsd AFL_STATSD=1 afl-fuzz -S test-fuzzer-2 -i i -o o [./bin/my-application] @@
+...
+</code></pre></article>
+ 
+
+      <footer class="book-footer">
+        
+  <div class="flex justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+      </footer>
+      
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#afl-metrics-and-statsd">AFL++ metrics and StatsD</a></li>
+    <li><a href="#setting-environment-variables-in-afl">Setting environment variables in AFL++</a></li>
+    <li><a href="#installing-and-setting-up-statsd-prometheus-and-grafana">Installing and setting up StatsD, Prometheus, and Grafana</a></li>
+    <li><a href="#running-afl-with-statsd">Running AFL++ with StatsD</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
